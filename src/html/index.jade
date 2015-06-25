@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title FIGleditr
+    link(rel="stylesheet" href="css/main.css?v")
+  body
+    #app
+      button.reset-button.js-reset-button Reset
+      input.js-color-picker(type="color" value="#323b43")
+      select(name="fonts" class="js-select")
+      textarea(class="js-editor")
+      a.js-download(href="" download="figleditr.png" target="_blank") Download image
+      .figlet.js-figlet
+    script(src="js/main.js?v")
