@@ -14,6 +14,8 @@ export default class Editor {
     this.addInputEvent();
 
     store.addChangeListener(this._handleStoreChange.bind(this));
+
+    this.el.focus();
   }
 
   addInputEvent() {

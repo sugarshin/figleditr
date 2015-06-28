@@ -71,10 +71,6 @@ export default {
       src: './node_modules/figlet/fonts/**',
       dest: `${D.DEST}/fonts`
     },
-    octicons: {
-      src: './node_modules/octicons/octicons/octicons.{css,eot,svg,ttf,woff}',
-      dest: `${D.DEST}/css`
-    },
     fontName: {
       src: `./${D.SRC}/font-name.json`,
       dest: `${D.DEST}`

@@ -17,7 +17,9 @@ export default class ResetButton {
   }
 
   _handleClick() {
-    actions.reset();
+    if (confirm('Are you sure ?')) {
+      actions.reset();
+    }
   }
 
 }

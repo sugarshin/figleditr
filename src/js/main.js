@@ -28,3 +28,11 @@ new DownloadButton(
 );
 
 actions.fetchData();
+
+
+
+// WIP
+document.querySelector('.js-open-setting').addEventListener('click', ev => {
+  ev.currentTarget.classList.toggle('opend');
+  document.querySelector('.js-settings').classList.toggle('visible');
+});
