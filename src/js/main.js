@@ -10,7 +10,16 @@ let figletEl = document.querySelector('.js-figlet');
 
 new Result(figletEl);
 new FontSelector(document.querySelector('.js-select'));
-new ColorPicker(document.querySelector('.js-color-picker'));
+
+new ColorPicker(
+  document.querySelector('.js-color-picker-for-color'),
+  {target: 'color'}
+);
+new ColorPicker(
+  document.querySelector('.js-color-picker-for-bg'),
+  {target: 'background'}
+);
+
 new Editor(document.querySelector('.js-editor'));
 new ResetButton(document.querySelector('.js-reset-button'));
 new DownloadButton(

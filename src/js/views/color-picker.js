@@ -5,29 +5,33 @@ const { FETCH_DATA, RESET_DATA } = ActionTypes;
 
 export default class ColorPicker {
 
-  constructor(el) {
+  constructor(el, opts) {
     this.el = el;
+    this.opts = opts;
+    this._Target = this.__upcaseFirstLetter(opts.target);
 
     store.addChangeListener(this._handleStoreChange.bind(this));
+
+    this._boundHandleChange = this._handleChange.bind(this);
     this.addChangeEvent();
   }
 
   addChangeEvent() {
-    this.el.addEventListener('change', this._handleChange);
+    this.el.addEventListener('change', this._boundHandleChange);
   }
 
   rmChangeEvent() {
-    this.el.removeEventListener('change', this._handleChange);
+    this.el.removeEventListener('change', this._boundHandleChange);
   }
 
   _handleChange(ev) {
-    actions.changeColor(ev.target.value);
+    actions[`change${this._Target}`](ev.target.value);
   }
 
   _handleStoreChange(type) {
     switch(type) {
       case FETCH_DATA:
-        this._setColor();
+        this._setValue();
         break;
 
       case RESET_DATA:
@@ -39,12 +43,16 @@ export default class ColorPicker {
     }
   }
 
-  _setColor() {
-    this.el.value = store.get('color');
+  _setValue() {
+    this.el.value = store.get(this.opts.target);
   }
 
   _setDefault() {
-    this.el.value = DEFAULT_STATE.color;
+    this.el.value = DEFAULT_STATE[this.opts.target];
+  }
+
+  __upcaseFirstLetter(str) {
+    return `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
   }
 
 }
