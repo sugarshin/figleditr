@@ -1,6 +1,6 @@
 {
   "name": "figleditr",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "figleditr is editor with FIGlet.",
   "repository": {
     "type": "git",
@@ -50,6 +50,7 @@
     "lodash.debounce": "^3.1.0",
     "lodash.throttle": "^3.0.3",
     "object-assign": "^3.0.0",
-    "octicons": "^2.2.0"
+    "octicons": "^2.2.0",
+    "whatwg-fetch": "^0.9.0"
   }
 }
