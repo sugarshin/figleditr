@@ -11,3 +11,8 @@ gulp.task('copy:octicons', () => {
   return gulp.src(conf.octicons.src)
     .pipe(gulp.dest(conf.octicons.dest));
 });
+
+gulp.task('copy:font-name.json', () => {
+  return gulp.src(conf.fontName.src)
+    .pipe(gulp.dest(conf.fontName.dest));
+});

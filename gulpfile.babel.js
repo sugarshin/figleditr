@@ -9,7 +9,7 @@ requireDir('./gulp/tasks');
 
 gulp.task('predefault', cb => {
   runSequence(
-    ['jade', 'stylus', 'copy:fonts-figlet', 'copy:octicons', 'watchify'],
+    ['jade', 'stylus', 'copy:fonts-figlet', 'copy:octicons', 'copy:font-name.json', 'watchify'],
     'serve',
     cb
   );
@@ -33,7 +33,7 @@ gulp.task('default', ['predefault'], () => {
 gulp.task('build', cb => {
   runSequence(
     'clean',
-    ['jade', 'stylus', 'copy:fonts-figlet', 'copy:octicons'],
+    ['jade', 'stylus', 'copy:fonts-figlet', 'copy:octicons', 'copy:font-name.json'],
     ['replace', 'minify-css', 'browserify'],
     'uglify',
     cb
