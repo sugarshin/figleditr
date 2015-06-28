@@ -1,5 +1,6 @@
 {
   "name": "figleditr",
+  "version": "0.0.1",
   "description": "figleditr is editor with FIGlet.",
   "repository": {
     "type": "git",

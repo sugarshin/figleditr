@@ -1,7 +1,7 @@
 // config
 
 const D = {
-  PATH: '/',
+  PATH: '/figleditr',
   SRC: 'src',
   DEST: 'public'
 };
@@ -17,7 +17,9 @@ export default {
       index: `${D.DEST}${D.PATH}/`,
       routes: (() => {
         let obj = {};
-        obj[D.PATH] = `${D.DEST}${D.PATH}/`;
+        obj[D.PATH] = `${D.DEST}/`;
+        obj[`${D.PATH}/font-name.json`] = `${D.DEST}/font-name.json`;
+        obj[`${D.PATH}/fonts`] = `${D.DEST}/fonts`;
         return obj;
       })()
     }
@@ -29,12 +31,12 @@ export default {
       // extensions: ['.coffee'],
       transform: ['babelify']
     },
-    dest: `${D.DEST}${D.PATH}/js`
+    dest: `${D.DEST}/js`
   },
 
   uglify: {
-    src: `./${D.DEST}${D.PATH}/js/main.js`,
-    dest: `${D.DEST}${D.PATH}/js`
+    src: `./${D.DEST}/js/main.js`,
+    dest: `${D.DEST}/js`
   },
 
   jade: {
@@ -43,7 +45,7 @@ export default {
       `!${D.SRC}/**/_**/*.jade`,
       `!${D.SRC}/**/_*.jade`
     ],
-    dest: `${D.DEST}${D.PATH}`
+    dest: `${D.DEST}`
   },
 
   stylus: {
@@ -52,16 +54,16 @@ export default {
       `!${D.SRC}/**/_**/*.styl`,
       `!${D.SRC}/**/_*.styl`
     ],
-    dest: `${D.DEST}${D.PATH}/css`
+    dest: `${D.DEST}/css`
   },
 
   minifyCss: {
-    src: `${D.DEST}${D.PATH}/css/main.css`,
-    dest: `${D.DEST}${D.PATH}/css`
+    src: `${D.DEST}/css/main.css`,
+    dest: `${D.DEST}/css`
   },
 
   clean: {
-    path: [`${D.DEST}${D.PATH}`]
+    path: [`${D.DEST}`]
   },
 
   copy: {
@@ -76,8 +78,8 @@ export default {
   },
 
   replace: {
-    src: `${D.DEST}${D.PATH}/index.html`,
-    dest: `${D.DEST}${D.PATH}`,
+    src: `${D.DEST}/index.html`,
+    dest: `${D.DEST}`,
     replacements: [
       ['main.js?v', `main.min.js?v${Date.now()}`],
       ['main.css?v', `main.min.css?v${Date.now()}`]

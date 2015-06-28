@@ -3,6 +3,8 @@ import EasyAgent from 'easyagent';
 import { actions, store } from '../flux';
 import { ActionTypes, DEFAULT_STATE } from '../constants';
 
+import { name } from '../../../package';
+
 const { FETCH_DATA, RESET_DATA } = ActionTypes;
 
 export default class FontSelector {
@@ -55,7 +57,7 @@ export default class FontSelector {
   }
 
   _createOptions() {
-    return EasyAgent.get('/font-name.json')
+    return EasyAgent.get(`/${name}/font-name.json`)
       // .setHeaders({'Accept': 'text/plain'})
       .fetchJson()
       .then((json) => {
