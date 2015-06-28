@@ -6,10 +6,13 @@ html
     link(rel="stylesheet" href="css/main.css?v")
   body
     button.reset-button.js-reset-button Reset
+    span color
     input.js-color-picker-for-color(type="color" value="#323b43")
+    span Background
     input.js-color-picker-for-bg(type="color" value="#f4f7f9")
     select.js-select(name="fonts")
-    textarea(class="js-editor")
-    a.js-download(href="" download="figleditr.png" target="_blank") Download image
+    div: textarea(class="js-editor" cols="64" rows="8")
     .figlet.js-figlet
+    div
+      a.js-download(href="" download="figleditr.png" target="_blank") Download image
     script(src="js/main.js?v")
