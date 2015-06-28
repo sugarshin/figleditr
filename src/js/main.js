@@ -7,12 +7,13 @@ import DownloadButton from './views/download-button';
 import { actions } from './flux';
 
 let figletEl = document.querySelector('.js-figlet');
-let result = new Result(figletEl);
-let fontSelector = new FontSelector(document.querySelector('.js-select'));
-let color = new ColorPicker(document.querySelector('.js-color-picker'));
-let editor = new Editor(document.querySelector('.js-editor'));
-let resetButton = new ResetButton(document.querySelector('.js-reset-button'));
-let downloadButton = new DownloadButton(
+
+new Result(figletEl);
+new FontSelector(document.querySelector('.js-select'));
+new ColorPicker(document.querySelector('.js-color-picker'));
+new Editor(document.querySelector('.js-editor'));
+new ResetButton(document.querySelector('.js-reset-button'));
+new DownloadButton(
   document.querySelector('.js-download'),
   figletEl
 );
