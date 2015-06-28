@@ -1,19 +1,9 @@
 import html2canvas from 'html2canvas';
 import debounce from 'lodash.debounce';
 
-import { actions, store } from '../flux';
-import { ActionTypes, DEFAULT_STATE } from '../constants';
+import { store } from '../flux';
 
 global.html2canvas = html2canvas;
-
-const {
-  FETCH_DATA,
-  INPUT_TEXT,
-  CHANGE_FONT,
-  CHANGE_COLOR,
-  CHANGE_BACKGROUND,
-  RESET_DATA
-} = ActionTypes;
 
 export default class DownloadButton {
 
@@ -27,7 +17,7 @@ export default class DownloadButton {
   }
 
   _handleChangeStore() {
-    this._updateDownloadURL()
+    this._updateDownloadURL();
   }
 
   _updateDownloadURL() {
