@@ -51,10 +51,6 @@ export default class Store extends EventEmitter {
     this._state = assign({}, _state, updates);
   }
 
-  _replace(replaces) {
-    this._state = replaces;
-  }
-
   _emitChange(...type) {
     this.emit(CHANGE_EVENT, ...type);
   }
