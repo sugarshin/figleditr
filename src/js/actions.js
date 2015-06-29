@@ -10,13 +10,14 @@ const {
   CHANGE_FONT,
   CHANGE_COLOR,
   CHANGE_BACKGROUND,
+  CHANGE_SIZE,
   RESET_DATA
 } = ActionTypes;
 
 export default class Actions {
 
   constructor() {
-    this._throttledSaveSata = throttle(this._saveData, 1000);
+    this._throttledSaveData = throttle(this.__saveData, 1000);
   }
 
   fetchData() {
@@ -34,7 +35,7 @@ export default class Actions {
       text: text
     });
 
-    this._throttledSaveSata({text: text});
+    this._throttledSaveData({text: text});
   }
 
   changeFont(name) {
@@ -43,7 +44,7 @@ export default class Actions {
       font: name
     });
 
-    this._throttledSaveSata({font: name});
+    this._throttledSaveData({font: name});
   }
 
   changeColor(colorCode) {
@@ -52,7 +53,7 @@ export default class Actions {
       color: colorCode
     });
 
-    this._throttledSaveSata({color: colorCode});
+    this._throttledSaveData({color: colorCode});
   }
 
   changeBackground(colorCodeOrImagePath) {
@@ -61,7 +62,16 @@ export default class Actions {
       background: colorCodeOrImagePath
     });
 
-    this._throttledSaveSata({background: colorCodeOrImagePath});
+    this._throttledSaveData({background: colorCodeOrImagePath});
+  }
+
+  changeSize(size) {
+    dispatcher.dispatch({
+      actionType: CHANGE_SIZE,
+      size
+    });
+
+    this._throttledSaveData({size});
   }
 
   reset() {
@@ -70,10 +80,10 @@ export default class Actions {
       data: DEFAULT_STATE
     });
 
-    this._throttledSaveSata(DEFAULT_STATE);
+    this._throttledSaveData(DEFAULT_STATE);
   }
 
-  _saveData(data) {
+  __saveData(data) {
     API.save(data);
   }
 

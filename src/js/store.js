@@ -10,6 +10,7 @@ const {
   CHANGE_FONT,
   CHANGE_COLOR,
   CHANGE_BACKGROUND,
+  CHANGE_SIZE,
   RESET_DATA
 } = ActionTypes;
 const CHANGE_EVENT = 'change';
@@ -91,8 +92,14 @@ export default class Store extends EventEmitter {
         this._emitChange(CHANGE_BACKGROUND);
         break;
 
+      case CHANGE_SIZE:
+        this._update({size: action.size});
+        this._emitChange(CHANGE_SIZE);
+        break;
+
       default:
         // noop
+
     }
   }
 

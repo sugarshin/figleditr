@@ -12,7 +12,7 @@ html
     header.header
       h1: a(href="./") figleditr
       .open-setting-button-wrapper
-        button.open-setting-button.js-open-setting.opend
+        button.open-setting-button.js-open-setting.opend(type="button")
           span.octicon.octicon-gear
 
     .settings.js-settings.visible
@@ -20,13 +20,22 @@ html
         dt Font
         dd: select.js-select.font-select(name="fonts")
 
+        dt Size
+        dd
+          button.resize-button.js-incremate-button(type="button")
+            span.octicon.octicon-plus
+          span.resize-rate 1.0px
+          button.resize-button.js-decremate-button(type="button")
+            span.octicon.octicon-dash
+
         dt Color
         dd: input.js-color-picker-for-color(type="color" value="#323b43")
 
         dt Background
         dd: input.js-color-picker-for-bg(type="color" value="#f4f7f9")
 
-      button.reset-button.js-reset-button Reset
+      .reset-button
+        button.js-reset-button(type="button") Reset
 
     .editor: textarea(class="js-editor")
 

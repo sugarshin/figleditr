@@ -10,6 +10,7 @@ const {
   CHANGE_FONT,
   CHANGE_COLOR,
   CHANGE_BACKGROUND,
+  CHANGE_SIZE,
   RESET_DATA
 } = ActionTypes;
 
@@ -25,14 +26,14 @@ export default class Result {
 
     this.state = store.getAll();
 
-    store.addChangeListener(this._handleChange.bind(this));
+    store.addChangeListener(this._handleChangeStore.bind(this));
   }
 
   setState(updates) {
     this.state = assign({}, this.state, updates);
   }
 
-  _handleChange(type) {
+  _handleChangeStore(type) {
 
     switch(type) {
 
@@ -42,8 +43,8 @@ export default class Result {
         break;
 
       case RESET_DATA:
-        const {font, color, background} = store.getAll();
-        this.setState({font, color, background});
+        const { font, color, background, size } = store.getAll();
+        this.setState({ font, color, background, size });
         this._updateAll();
         break;
 
@@ -75,12 +76,19 @@ export default class Result {
         this._changeBackground();
         break;
 
+      case CHANGE_SIZE:
+        this.setState({
+          size: store.get('size')
+        });
+        this._changeSize();
+        break;
+
       default:
         // noop
 
     }
 
-  }// _handleChange
+  }// _handleChangeStore
 
   _update() {
     const { text, font } = this.state;
@@ -106,10 +114,16 @@ export default class Result {
     this.el.style.background = background;
   }
 
+  _changeSize() {
+    const { size } = this.state;
+    this.codeEl.style.fontSize = `${size}px`;
+  }
+
   _updateAll() {
     this._update();
     this._changeColor();
     this._changeBackground();
+    this._changeSize();
   }
 
 }

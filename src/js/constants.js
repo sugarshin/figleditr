@@ -7,11 +7,13 @@ export default {
     CHANGE_FONT: null,
     CHANGE_COLOR: null,
     CHANGE_BACKGROUND: null,
+    CHANGE_SIZE: null,
     RESET_DATA: null
   }),
   DEFAULT_STATE: {
     color: '#323b43',
     background: '#f4f7f9',
-    font: 'Standard'
+    font: 'Standard',
+    size: 11
   }
 };

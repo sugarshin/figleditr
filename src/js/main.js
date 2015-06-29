@@ -4,6 +4,8 @@ import ColorPicker from './views/color-picker';
 import Editor from './views/editor';
 import ResetButton from './views/reset-button';
 import DownloadButton from './views/download-button';
+import IncremateButton from './views/incremate-button';
+import DecremateButton from './views/decremate-button';
 import { actions } from './flux';
 
 const figletEl = document.querySelector('.js-figlet');
@@ -26,6 +28,9 @@ new DownloadButton(
   document.querySelector('.js-download'),
   figletEl
 );
+
+new IncremateButton(document.querySelector('.js-incremate-button'));
+new DecremateButton(document.querySelector('.js-decremate-button'));
 
 actions.fetchData();
 
