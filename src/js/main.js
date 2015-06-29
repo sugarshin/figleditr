@@ -6,7 +6,7 @@ import ResetButton from './views/reset-button';
 import DownloadButton from './views/download-button';
 import { actions } from './flux';
 
-let figletEl = document.querySelector('.js-figlet');
+const figletEl = document.querySelector('.js-figlet');
 
 new Result(figletEl);
 new FontSelector(document.querySelector('.js-select'));

@@ -14,10 +14,11 @@ html
       .open-setting-button-wrapper
         button.open-setting-button.js-open-setting.opend
           span.octicon.octicon-gear
+
     .settings.js-settings.visible
       dl
         dt Font
-        dd: select.js-select(name="fonts")
+        dd: select.js-select.font-select(name="fonts")
 
         dt Color
         dd: input.js-color-picker-for-color(type="color" value="#323b43")
@@ -28,11 +29,15 @@ html
       button.reset-button.js-reset-button Reset
 
     .editor: textarea(class="js-editor")
-    .figlet.js-figlet
+
+    .figlet-container
+      .js-figlet
       .download-button
         a.js-download(href="" download="figleditr.png" target="_blank")
           span.octicon.octicon-cloud-download
           | Download image
+
     footer.footer
       p: small &copy; figleditr | github/sugarshin
+
     script(src="js/main.js?v")

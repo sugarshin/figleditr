@@ -19,7 +19,7 @@ export default class Store extends EventEmitter {
   constructor() {
     super();
 
-    this._state = assign({}, DEFAULT_STATE, {text: 'FIGleditr!!'});//{text: ''};//
+    this._state = assign({}, DEFAULT_STATE, {text: 'FIGleditr!!'});
 
     dispatcher.register(this._handler.bind(this));
   }

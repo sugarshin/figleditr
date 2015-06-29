@@ -20,13 +20,12 @@ export default class Result {
     let code = document.createElement('code');
     pre.appendChild(code);
     el.appendChild(pre);
-    this.el = code;
-    this.wrapper = el;
+    this.codeEl = code;
+    this.el = el;
 
     this.state = store.getAll();
 
     store.addChangeListener(this._handleChange.bind(this));
-
   }
 
   setState(updates) {
@@ -93,18 +92,18 @@ export default class Result {
       if (err) {
         return console.dir(err);
       }
-      this.el.textContent = data;
+      this.codeEl.textContent = data;
     });
   }
 
   _changeColor() {
     const { color } = this.state;
-    this.el.style.color = color;
+    this.codeEl.style.color = color;
   }
 
   _changeBackground() {
     const { background } = this.state;
-    this.wrapper.style.background = background;
+    this.el.style.background = background;
   }
 
   _updateAll() {

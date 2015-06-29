@@ -10,7 +10,7 @@ export default class ColorPicker {
     this.opts = opts;
     this._Target = this.__upcaseFirstLetter(opts.target);
 
-    store.addChangeListener(this._handleStoreChange.bind(this));
+    store.addChangeListener(this._handleChangeStore.bind(this));
 
     this._boundHandleChange = this._handleChange.bind(this);
     this.addChangeEvent();
@@ -28,7 +28,7 @@ export default class ColorPicker {
     actions[`change${this._Target}`](ev.target.value);
   }
 
-  _handleStoreChange(type) {
+  _handleChangeStore(type) {
     switch(type) {
       case FETCH_DATA:
         this._setValue();

@@ -13,7 +13,7 @@ export default class Editor {
     this._throttledHandleInput = throttle(this._handleInput, 500);
     this.addInputEvent();
 
-    store.addChangeListener(this._handleStoreChange.bind(this));
+    store.addChangeListener(this._handleChangeStore.bind(this));
 
     this.el.focus();
   }
@@ -30,7 +30,7 @@ export default class Editor {
     actions.inputText(ev.target.value);
   }
 
-  _handleStoreChange(type) {
+  _handleChangeStore(type) {
     switch(type) {
       case FETCH_DATA:
         this._initializeValue();
