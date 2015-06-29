@@ -14,25 +14,29 @@ html
       .open-setting-button-wrapper
         button.open-setting-button.js-open-setting.opend(type="button")
           span.octicon.octicon-gear
+          span.octicon.octicon-x
 
     .settings.js-settings.visible
-      dl
-        dt Font
-        dd: select.js-select.font-select(name="fonts")
+      .settings-item
+        .settings-item-title Font
+        .settings-item-body: select.js-select.font-select(name="fonts")
 
-        dt Size
-        dd
+      .settings-item
+        .settings-item-title Size
+        .settings-item-body
           button.resize-button.js-incremate-button(type="button")
             span.octicon.octicon-plus
           span.resize-rate 1.0px
           button.resize-button.js-decremate-button(type="button")
             span.octicon.octicon-dash
 
-        dt Color
-        dd: input.js-color-picker-for-color(type="color" value="#323b43")
+      .settings-item
+        .settings-item-title Color
+        .settings-item-body: input.js-color-picker-for-color(type="color" value="#323b43")
 
-        dt Background
-        dd: input.js-color-picker-for-bg(type="color" value="#f4f7f9")
+      .settings-item
+        .settings-item-title Background
+        .settings-item-body: input.js-color-picker-for-bg(type="color" value="#f4f7f9")
 
       .reset-button
         button.js-reset-button(type="button") Reset

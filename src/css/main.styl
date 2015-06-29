@@ -41,7 +41,14 @@ body
     outline none
     background _dark
     color _light
-    &:hover, &.opend
+    .octicon-x
+      display none
+    &.opend
+      .octicon-gear
+        display none
+      .octicon-x
+        display inline-block
+    &:hover
       background _light
       color _dark
 
@@ -49,26 +56,37 @@ body
   display none
   position absolute
   width 37.5%
-  background-color _light
+  background-color _dark
   right 0
   padding 1% 2%
   z-index 32
-
   &.visible
     display block
-  dl
-    margin-top 0
-    line-height 2
-  dd
-    margin-left 10%
+
+  &-item
+    line-height 3
+    margin-bottom 5%
+    border-bottom 1px solid _middle
+    &-title
+      display inline-block
+      margin-right 5%
+      color _light
+    &-body
+      display inline-block
+
   .font-select
     width 62.5%
     max-width 158px
 
   .resize-button
     line-height 1
+
+  input[type="color"]
+    cursor pointer
   .resize-rate
-    margin 0 1em
+    color _light
+    font-size .9em
+    margin 0 .5em
 
 .editor
   height 37.5%
@@ -84,7 +102,8 @@ textarea
 .reset-button
   margin 2% 0
   text-align right
-
+  button
+    font-size .8em
 .figlet-container
   min-height 50%
   position relative

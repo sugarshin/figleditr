@@ -21,7 +21,7 @@ export default class DecremateButton {
 
   _handleClick() {
     const current = store.get('size');
-    if (current > 0) {
+    if (current > 9) {
       const size = current - 1;
       actions.changeSize(size);
     }
