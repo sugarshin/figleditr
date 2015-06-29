@@ -11,3 +11,8 @@ gulp.task('copy:font-name.json', () => {
   return gulp.src(conf.fontName.src)
     .pipe(gulp.dest(conf.fontName.dest));
 });
+
+gulp.task('copy:zeroclipboard', () => {
+  return gulp.src(conf.zeroclipboard.src)
+    .pipe(gulp.dest(conf.zeroclipboard.dest));
+});

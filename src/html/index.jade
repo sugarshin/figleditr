@@ -45,10 +45,15 @@ html
 
     .figlet-container
       .js-figlet
-      .download-button
-        a.js-download(href="" download="figleditr.png" target="_blank")
-          span.octicon.octicon-cloud-download
-          | Download image
+      .getter
+        .download-button
+          a.js-download(href="" download="figleditr.png" target="_blank")
+            span.octicon.octicon-cloud-download
+            | Download image
+        .copy-button
+          button.js-copy(type="button")
+            span.octicon.octicon-clippy
+            | Copy to clipboard
 
     footer.footer
       p: small &copy; figleditr | github/sugarshin

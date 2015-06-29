@@ -74,6 +74,10 @@ export default {
     fontName: {
       src: `./${D.SRC}/font-name.json`,
       dest: `${D.DEST}`
+    },
+    zeroclipboard: {
+      src: `./node_modules/zeroclipboard/dist/ZeroClipboard.swf`,
+      dest: `${D.DEST}`
     }
   },
 

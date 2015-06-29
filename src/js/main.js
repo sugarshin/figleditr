@@ -4,6 +4,7 @@ import ColorPicker from './views/color-picker';
 import Editor from './views/editor';
 import ResetButton from './views/reset-button';
 import DownloadButton from './views/download-button';
+import CopyButton from './views/copy-button';
 import IncremateButton from './views/incremate-button';
 import DecremateButton from './views/decremate-button';
 import { actions } from './flux';
@@ -26,6 +27,11 @@ new Editor(document.querySelector('.js-editor'));
 new ResetButton(document.querySelector('.js-reset-button'));
 new DownloadButton(
   document.querySelector('.js-download'),
+  figletEl
+);
+
+new CopyButton(
+  document.querySelector('.js-copy'),
   figletEl
 );
 

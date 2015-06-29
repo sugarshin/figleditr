@@ -135,11 +135,14 @@ code
   word-wrap normal
   border 0
 
-.download-button
+.getter
   position absolute
   bottom 0
   left 0
   z-index 1
+
+.download-button
+  display inline-block
   a
     color inherit
     text-decoration none
@@ -148,6 +151,24 @@ code
     padding .4em .6em
     font-size 13px
     &:hover
+      opacity 1
+      background _dark
+      color _light
+    .octicon
+      margin-right .4em
+
+.copy-button
+  display inline-block
+  button
+    color inherit
+    opacity .3
+    appearance none
+    padding .4em .6em
+    font-size 13px
+    border 0
+    background none
+    outline none
+    &.zeroclipboard-is-hover
       opacity 1
       background _dark
       color _light
