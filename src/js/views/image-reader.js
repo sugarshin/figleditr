@@ -23,10 +23,10 @@ export default class ImageReader {
     this._read(ev.target.files)
       .then((imagePath) => {
         const value = `url(${imagePath})`;
-        actions[`changeBackground`](value);
+        actions.changeBackground(value);
       })
       .catch((err) => {
-        console.dir(err);
+        console.log(err);
       });
   }
 
