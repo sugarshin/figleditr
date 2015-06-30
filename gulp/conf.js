@@ -72,7 +72,7 @@ export default {
       dest: `${D.DEST}/fonts`
     },
     fontName: {
-      src: `./${D.SRC}/font-name.json`,
+      src: `./${D.SRC}/font-names.json`,
       dest: `${D.DEST}`
     },
     zeroclipboard: {

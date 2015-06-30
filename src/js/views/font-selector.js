@@ -17,7 +17,7 @@ export default class FontSelector {
       this.addChangeEvent();
     });
 
-    store.addChangeListener(this._handleStoreChange.bind(this));
+    store.addChangeListener(this._handleChangeStore.bind(this));
   }
 
   addChangeEvent() {
@@ -32,7 +32,7 @@ export default class FontSelector {
     actions.changeFont(ev.target.value);
   }
 
-  _handleStoreChange(type) {
+  _handleChangeStore(type) {
     switch(type) {
       case FETCH_DATA:
         this._initialize.then(() => {
@@ -58,15 +58,14 @@ export default class FontSelector {
   }
 
   _createOptions() {
-    return EasyAgent.get(`/${name}/font-name.json`)
-      // .setHeaders({'Accept': 'text/plain'})
+    return EasyAgent.get(`/${name}/font-names.json`)
       .fetchJson()
       .then((json) => {
-        this._appendOption(json.fontNames);
+        this._appendOption(json);
       })
       .catch((err) => {
-        console.dir(err);
-        alert('ERROR: Failed to read the font.');
+        console.log(err);
+        alert('ERROR: Failed to read the font names.');
       });
   }
 
