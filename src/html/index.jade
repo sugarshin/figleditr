@@ -36,7 +36,10 @@ html
 
       .settings-item
         .settings-item-title Background
-        .settings-item-body: input.js-color-picker-for-bg(type="color" value="#f4f7f9")
+        .settings-item-body
+          input.js-color-picker-for-bg(type="color" value="#f4f7f9")
+          br
+          input.js-image-reader(type="file" accept="image/*")
 
       .reset-button
         button.js-reset-button(type="button") Reset
@@ -44,7 +47,7 @@ html
     .editor: textarea(class="js-editor")
 
     .figlet-container
-      .js-figlet
+      .js-figlet.figlet
       .getter
         .download-button
           a.js-download(href="" download="figleditr.png" target="_blank")

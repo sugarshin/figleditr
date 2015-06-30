@@ -68,11 +68,13 @@ body
     padding 0 0 16px
     margin-bottom 16px
     border-bottom 1px solid _middle
+    width 100%
     &-title
       display inline-block
       margin-right 5%
       color _light
     &-body
+      width 100%
       display inline-block
 
   .font-select
@@ -82,8 +84,11 @@ body
   .resize-button
     line-height 1
 
-  input[type="color"]
+  input
     cursor pointer
+    max-width 100%
+    &[type="file"]
+      color _light
   .resize-rate
     color _light
     font-size .9em
@@ -108,6 +113,10 @@ textarea
 .figlet-container
   min-height 50%
   position relative
+
+.figlet
+  background-repeat no-repeat
+  background-position center
 
 pre
   margin 0

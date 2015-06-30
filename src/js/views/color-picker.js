@@ -44,7 +44,9 @@ export default class ColorPicker {
   }
 
   _setValue() {
-    this.el.value = store.get(this.opts.target);
+    const value = store.get(this.opts.target);
+    if (/url\(data\:image\//.test(value)) return;
+    this.el.value = value;
   }
 
   _setDefault() {

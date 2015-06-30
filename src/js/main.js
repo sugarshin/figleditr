@@ -1,6 +1,7 @@
 import Result from './views/result';
 import FontSelector from './views/font-selector';
 import ColorPicker from './views/color-picker';
+import ImageReader from './views/image-reader';
 import Editor from './views/editor';
 import ResetButton from './views/reset-button';
 import DownloadButton from './views/download-button';
@@ -22,6 +23,8 @@ new ColorPicker(
   document.querySelector('.js-color-picker-for-bg'),
   {target: 'background'}
 );
+
+new ImageReader(document.querySelector('.js-image-reader'));
 
 new Editor(document.querySelector('.js-editor'));
 new ResetButton(document.querySelector('.js-reset-button'));
