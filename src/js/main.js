@@ -6,6 +6,7 @@ import Editor from './views/editor';
 import ResetButton from './views/reset-button';
 import DownloadButton from './views/download-button';
 import CopyButton from './views/copy-button';
+import FontsizeSelector from './views/fontsize-selector';
 import IncremateButton from './views/incremate-button';
 import DecremateButton from './views/decremate-button';
 import { actions } from './flux';
@@ -38,6 +39,7 @@ new CopyButton(
   figletEl
 );
 
+new FontsizeSelector(document.querySelector('.js-fontsize-select'));
 new IncremateButton(document.querySelector('.js-incremate-button'));
 new DecremateButton(document.querySelector('.js-decremate-button'));
 

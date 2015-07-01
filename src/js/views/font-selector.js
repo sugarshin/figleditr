@@ -60,10 +60,10 @@ export default class FontSelector {
   _createOptions() {
     return EasyAgent.get(`/${name}/font-names.json`)
       .fetchJson()
-      .then((json) => {
+      .then(json => {
         this._appendOption(json);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
         alert('ERROR: Failed to read the font names.');
       });

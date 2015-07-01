@@ -39,6 +39,7 @@
     "watchify": "^3.2.2"
   },
   "dependencies": {
+    "array.from": "^0.2.0",
     "bluebird": "^2.9.30",
     "easyagent": "^0.0.3",
     "eventemitter3": "^1.1.1",

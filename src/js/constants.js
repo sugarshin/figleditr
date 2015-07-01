@@ -15,5 +15,8 @@ export default {
     background: '#f4f7f9',
     font: 'Standard',
     size: 11
-  }
+  },
+  INITIAL_TEXT: 'FIGleditr!!',
+  MAX_FONT_SIZE: 64,
+  MIN_FONT_SIZE: 9
 };

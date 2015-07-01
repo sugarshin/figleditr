@@ -71,8 +71,8 @@ export default {
       src: './node_modules/figlet/fonts/**',
       dest: `${D.DEST}/fonts`
     },
-    fontName: {
-      src: `./${D.SRC}/font-names.json`,
+    json: {
+      src: `./${D.SRC}/*.json`,
       dest: `${D.DEST}`
     },
     zeroclipboard: {

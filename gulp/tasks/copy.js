@@ -7,9 +7,9 @@ gulp.task('copy:fonts-figlet', () => {
     .pipe(gulp.dest(conf.figlet.dest));
 });
 
-gulp.task('copy:font-name.json', () => {
-  return gulp.src(conf.fontName.src)
-    .pipe(gulp.dest(conf.fontName.dest));
+gulp.task('copy:json', () => {
+  return gulp.src(conf.json.src)
+    .pipe(gulp.dest(conf.json.dest));
 });
 
 gulp.task('copy:zeroclipboard', () => {

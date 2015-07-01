@@ -1,5 +1,5 @@
 import { actions, store } from '../flux';
-import { ActionTypes, DEFAULT_STATE } from '../constants';
+import { ActionTypes, DEFAULT_STATE, MAX_FONT_SIZE } from '../constants';
 
 const { FETCH_DATA, RESET_DATA } = ActionTypes;
 
@@ -21,8 +21,10 @@ export default class IncremateButton {
 
   _handleClick() {
     const current = store.get('size');
-    const size = current + 1;
-    actions.changeSize(size);
+    if (current < MAX_FONT_SIZE) {
+      const size = current + 1;
+      actions.changeSize(size);
+    }
   }
 
 }

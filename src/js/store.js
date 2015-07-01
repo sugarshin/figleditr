@@ -2,7 +2,7 @@ import EventEmitter from 'eventemitter3';
 import assign from 'object-assign';
 
 import dispatcher from './dispatcher';
-import { ActionTypes, DEFAULT_STATE } from './constants';
+import { ActionTypes, DEFAULT_STATE, INITIAL_TEXT } from './constants';
 
 const {
   FETCH_DATA,
@@ -20,7 +20,7 @@ export default class Store extends EventEmitter {
   constructor() {
     super();
 
-    this._state = assign({}, DEFAULT_STATE, {text: 'FIGleditr!!'});
+    this._state = assign({}, DEFAULT_STATE, {text: INITIAL_TEXT});
 
     dispatcher.register(this._handler.bind(this));
   }
