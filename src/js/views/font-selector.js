@@ -1,5 +1,5 @@
+import 'bluebird';
 import 'whatwg-fetch';
-import EasyAgent from 'easyagent';
 
 import { actions, store } from '../flux';
 import { ActionTypes, DEFAULT_STATE } from '../constants';
@@ -58,8 +58,8 @@ export default class FontSelector {
   }
 
   _createOptions() {
-    return EasyAgent.get(`/${name}/font-names.json`)
-      .fetchJson()
+    return fetch(`/${name}/font-names.json`)
+      .then(res => res.json())
       .then(json => {
         this._appendOption(json);
       })

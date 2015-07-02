@@ -1,6 +1,4 @@
 import 'array.from';
-import 'whatwg-fetch';
-import EasyAgent from 'easyagent';
 
 import { actions, store } from '../flux';
 import {

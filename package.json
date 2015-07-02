@@ -41,7 +41,6 @@
   "dependencies": {
     "array.from": "^0.2.0",
     "bluebird": "^2.9.30",
-    "easyagent": "^0.0.3",
     "eventemitter3": "^1.1.1",
     "fbjs": "0.1.0-alpha.1",
     "figlet": "sugarshin/figlet.js",
