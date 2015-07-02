@@ -32,7 +32,8 @@ export default class FontSelector {
   }
 
   _handleChange(ev) {
-    actions.changeSize(ev.target.value);
+    const val = parseInt(ev.target.value, 10);
+    actions.changeSize(val);
   }
 
   _handleChangeStore(type) {
