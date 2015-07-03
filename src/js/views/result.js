@@ -111,7 +111,15 @@ export default class Result {
 
   _changeBackground() {
     const { background } = this.state;
-    this.el.style.background = background;
+    let value;
+
+    if (/data\:image\//.test(background)) {
+      value = `url(${background})`;
+    } else {
+      value = background;
+    }
+
+    this.el.style.background = value;
   }
 
   _changeSize() {

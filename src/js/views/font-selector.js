@@ -1,5 +1,4 @@
-import 'bluebird';
-import 'whatwg-fetch';
+import co from 'co';
 
 import { actions, store } from '../flux';
 import { ActionTypes, DEFAULT_STATE } from '../constants';
@@ -13,9 +12,10 @@ export default class FontSelector {
   constructor(el) {
     this.el = el;
 
-    this._initialize = this._createOptions().then(() => {
+    this._initialized = co(function* () {
+      yield this._createOptions();
       this.addChangeEvent();
-    });
+    }.bind(this));
 
     store.addChangeListener(this._handleChangeStore.bind(this));
   }
@@ -35,9 +35,10 @@ export default class FontSelector {
   _handleChangeStore(type) {
     switch(type) {
       case FETCH_DATA:
-        this._initialize.then(() => {
+        co(function* () {
+          yield this._initialized;
           this._setFont();
-        });
+        }.bind(this));
         break;
 
       case RESET_DATA:
@@ -58,15 +59,16 @@ export default class FontSelector {
   }
 
   _createOptions() {
-    return fetch(`/${name}/font-names.json`)
-      .then(res => res.json())
-      .then(json => {
+    return co(function* () {
+      try {
+        const res = yield fetch(`/${name}/font-names.json`);
+        const json = yield res.json();
         this._appendOption(json);
-      })
-      .catch(err => {
+      } catch (err) {
         console.log(err);
         alert('ERROR: Failed to read the font names.');
-      });
+      }
+    }.bind(this));
   }
 
   _appendOption(fontNames) {

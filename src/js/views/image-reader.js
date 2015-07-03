@@ -1,4 +1,5 @@
 import Promise from 'bluebird';
+import co from 'co';
 
 import { actions } from '../flux';
 
@@ -20,14 +21,14 @@ export default class ImageReader {
   }
 
   _handleChange(ev) {
-    this._read(ev.target.files)
-      .then((imagePath) => {
-        const value = `url(${imagePath})`;
-        actions.changeBackground(value);
-      })
-      .catch((err) => {
+    co(function* () {
+      try {
+        const imagePaths = yield this._read(ev.target.files);
+        actions.changeBackground(imagePaths[0]);
+      } catch (err) {
         console.log(err);
-      });
+      }
+    }.bind(this));
   }
 
   _read(files) {

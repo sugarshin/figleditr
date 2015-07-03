@@ -1,3 +1,6 @@
+import 'babel/polyfill';
+import 'whatwg-fetch';
+
 import Result from './views/result';
 import FontSelector from './views/font-selector';
 import ColorPicker from './views/color-picker';

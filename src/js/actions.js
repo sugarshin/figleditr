@@ -1,3 +1,4 @@
+import co from 'co';
 import throttle from 'lodash.throttle';
 
 import dispatcher from './dispatcher';
@@ -21,11 +22,16 @@ export default class Actions {
   }
 
   fetchData() {
-    API.fetch().then(data => {
-      dispatcher.dispatch({
-        actionType: FETCH_DATA,
-        data: data
-      });
+    co(function* () {
+      try {
+        const data = yield API.fetch();
+        dispatcher.dispatch({
+          actionType: FETCH_DATA,
+          data: data
+        });
+      } catch (err) {
+        console.log(err);
+      }
     });
   }
 
