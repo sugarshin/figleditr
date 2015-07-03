@@ -14,44 +14,42 @@ import IncremateButton from './views/incremate-button';
 import DecremateButton from './views/decremate-button';
 import { actions } from './flux';
 
-const figletEl = document.querySelector('.js-figlet');
+const querySelector = (selector) => {
+  return document.querySelector(selector);
+};
+
+const figletEl = querySelector('.js-figlet');
 
 new Result(figletEl);
-new FontSelector(document.querySelector('.js-select'));
+new FontSelector(querySelector('.js-select'));
 
 new ColorPicker(
-  document.querySelector('.js-color-picker-for-color'),
+  querySelector('.js-color-picker-for-color'),
   {target: 'color'}
 );
 new ColorPicker(
-  document.querySelector('.js-color-picker-for-bg'),
+  querySelector('.js-color-picker-for-bg'),
   {target: 'background'}
 );
 
-new ImageReader(document.querySelector('.js-image-reader'));
+new ImageReader(querySelector('.js-image-reader'));
 
-new Editor(document.querySelector('.js-editor'));
-new ResetButton(document.querySelector('.js-reset-button'));
-new DownloadButton(
-  document.querySelector('.js-download'),
-  figletEl
-);
+new Editor(querySelector('.js-editor'));
+new ResetButton(querySelector('.js-reset-button'));
+new DownloadButton(querySelector('.js-download'), figletEl);
 
-new CopyButton(
-  document.querySelector('.js-copy'),
-  figletEl
-);
+new CopyButton(querySelector('.js-copy'), figletEl);
 
-new FontsizeSelector(document.querySelector('.js-fontsize-select'));
-new IncremateButton(document.querySelector('.js-incremate-button'));
-new DecremateButton(document.querySelector('.js-decremate-button'));
+new FontsizeSelector(querySelector('.js-fontsize-select'));
+new IncremateButton(querySelector('.js-incremate-button'));
+new DecremateButton(querySelector('.js-decremate-button'));
 
 actions.fetchData();
 
 
 
 // WIP
-document.querySelector('.js-open-setting').addEventListener('click', ev => {
+querySelector('.js-open-setting').addEventListener('click', ev => {
   ev.currentTarget.classList.toggle('opend');
-  document.querySelector('.js-settings').classList.toggle('visible');
+  querySelector('.js-settings').classList.toggle('visible');
 });
