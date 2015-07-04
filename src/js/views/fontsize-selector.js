@@ -1,5 +1,3 @@
-import 'array.from';
-
 import { actions, store } from '../flux';
 import {
   ActionTypes,

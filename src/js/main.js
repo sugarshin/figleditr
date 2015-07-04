@@ -1,5 +1,6 @@
-import 'babel/polyfill';
+import 'array.from';
 import 'whatwg-fetch';
+import regeneratorRuntime from 'babel-runtime/regenerator';
 
 import Result from './views/result';
 import FontSelector from './views/font-selector';
@@ -14,7 +15,9 @@ import IncremateButton from './views/incremate-button';
 import DecremateButton from './views/decremate-button';
 import { actions } from './flux';
 
-const querySelector = (selector) => {
+global.regeneratorRuntime = regeneratorRuntime;
+
+const querySelector = selector => {
   return document.querySelector(selector);
 };
 
