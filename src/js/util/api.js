@@ -10,7 +10,7 @@ export default class API {
   static fetch() {
     return new Promise((resolve, reject) => {
       try {
-        resolve( JSON.parse(localStorage.getItem(NAME)) || {} );
+        resolve( JSON.parse(localStorage.getItem(NAME) || '{}') );
       } catch (err) {
         reject(err);
       }
