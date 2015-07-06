@@ -23,7 +23,7 @@ export default class ImageReader {
   _handleChange(ev) {
     co(function* () {
       try {
-        const imagePaths = yield this._read(ev.target.files);
+        const imagePaths = yield this._readFilesAsDataURL(ev.target.files);
         actions.changeBackground(imagePaths[0]);
       } catch (err) {
         console.log(err);
@@ -31,31 +31,34 @@ export default class ImageReader {
     }.bind(this));
   }
 
-  _read(files) {
+  _readFilesAsDataURL(files) {
     let fileArray = [];
     for (let i = 0, l = files.length; i < l; i++) {
       fileArray.push(files.item(i));
     }
+
     return Promise.all(
       fileArray.map(file => {
         if (!file.type.match('image.*')) return false;
-        return new Promise((resolve, reject) => {
-          const fr = new FileReader();
-
-          fr.onload = ev => {
-            resolve(ev.target.result);
-          };
-
-          fr.onerror = err => {
-            reject(err);
-          };
-
-          fr.readAsDataURL(file);
-        });
-      }).filter(promise => {
-        return promise;
-      })
+        return this.__readAsDataURL(file);
+      }).filter(promise => promise)
     );
+  }
+
+  __readAsDataURL(file) {
+    return new Promise((resolve, reject) => {
+      const fr = new FileReader();
+
+      fr.onload = ev => {
+        resolve(ev.target.result);
+      };
+
+      fr.onerror = err => {
+        reject(err);
+      };
+
+      fr.readAsDataURL(file);
+    });
   }
 
 }
