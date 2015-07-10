@@ -1,6 +1,7 @@
 import 'array.from';
 import 'whatwg-fetch';
 import regeneratorRuntime from 'babel-runtime/regenerator';
+import html2canvas from 'html2canvas';
 
 import Result from './views/result';
 import FontSelector from './views/font-selector';
@@ -16,6 +17,7 @@ import DecremateButton from './views/decremate-button';
 import { actions } from './flux';
 
 global.regeneratorRuntime = regeneratorRuntime;
+global.html2canvas = html2canvas;
 
 const querySelector = selector => {
   return document.querySelector(selector);

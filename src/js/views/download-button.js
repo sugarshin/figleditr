@@ -4,8 +4,6 @@ import debounce from 'lodash.debounce';
 
 import { store } from '../flux';
 
-global.html2canvas = html2canvas;
-
 export default class DownloadButton {
 
   constructor(el, target) {
