@@ -21,13 +21,10 @@ export default class DownloadButton {
 
   _updateDownloadURL() {
     co(function* () {
-      try {
-        const canvas = yield html2canvas(this.target);
-        this.el.setAttribute('href', canvas.toDataURL());
-      } catch (err) {
-        console.log(err);
-      }
-    }.bind(this));
+      const canvas = yield html2canvas(this.target);
+      this.el.setAttribute('href', canvas.toDataURL());
+    }.bind(this))
+    .catch(err => console.log('DownloadButton#_updateDownloadURL', err));
   }
 
 }

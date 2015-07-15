@@ -46,9 +46,7 @@ export default class Store extends EventEmitter {
   }
 
   _update(updates) {
-    const { _state } = this;
-
-    this._state = assign({}, _state, updates);
+    this._state = assign({}, this._state, updates);
   }
 
   _emitChange(...type) {

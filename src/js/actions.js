@@ -23,16 +23,13 @@ export default class Actions {
 
   fetchData() {
     co(function* () {
-      try {
-        const data = yield API.fetch();
-        dispatcher.dispatch({
-          actionType: FETCH_DATA,
-          data: data
-        });
-      } catch (err) {
-        console.log(err);
-      }
-    });
+      const data = yield API.fetch();
+      dispatcher.dispatch({
+        actionType: FETCH_DATA,
+        data: data
+      });
+    })
+    .catch(err => console.log('Actions#fetchData', err));
   }
 
   inputText(text) {

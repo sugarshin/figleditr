@@ -60,15 +60,14 @@ export default class FontSelector {
 
   _createOptions() {
     return co(function* () {
-      try {
-        const res = yield fetch(`/${name}/font-names.json`);
-        const json = yield res.json();
-        this._appendOption(json);
-      } catch (err) {
-        console.log(err);
-        alert('ERROR: Failed to read the font names.');
-      }
-    }.bind(this));
+      const res = yield fetch(`/${name}/font-name.json`);
+      const json = yield res.json();
+      this._appendOption(json);
+    }.bind(this))
+    .catch(err => {
+      console.log('FontSelector#_createOptions', err);
+      alert('ERROR: Failed to read the font names.');
+    });
   }
 
   _appendOption(fontNames) {

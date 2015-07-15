@@ -22,13 +22,10 @@ export default class ImageReader {
 
   _handleChange(ev) {
     co(function* () {
-      try {
-        const imagePaths = yield this._readFilesAsDataURL(ev.target.files);
-        actions.changeBackground(imagePaths[0]);
-      } catch (err) {
-        console.log(err);
-      }
-    }.bind(this));
+      const imagePaths = yield this._readFilesAsDataURL(ev.target.files);
+      actions.changeBackground(imagePaths[0]);
+    }.bind(this))
+    .catch(err => console.log('ImageReader#_handleChange', err));
   }
 
   _readFilesAsDataURL(files) {
