@@ -60,7 +60,7 @@ export default class FontSelector {
 
   _createOptions() {
     return co(function* () {
-      const res = yield fetch(`/${name}/font-name.json`);
+      const res = yield fetch(`/${name}/font-names.json`);
       const json = yield res.json();
       this._appendOption(json);
     }.bind(this))
