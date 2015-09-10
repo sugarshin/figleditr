@@ -1,15 +1,22 @@
 import gulp from 'gulp';
 import requireDir from 'require-dir';
 import runSequence from 'run-sequence';
-import {reload} from 'browser-sync';
+import { reload } from 'browser-sync';
 
-import {D} from './gulp/conf';
+import { D } from './gulp/conf';
 
 requireDir('./gulp/tasks');
 
 gulp.task('predefault', cb => {
   runSequence(
-    ['jade', 'stylus', 'copy:fonts-figlet', 'copy:json', 'copy:zeroclipboard', 'watchify'],
+    [
+      'jade',
+      'stylus',
+      'copy:fonts-figlet',
+      'copy:json',
+      'copy:zeroclipboard',
+      'watchify'
+    ],
     'serve',
     cb
   );

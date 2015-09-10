@@ -7,7 +7,8 @@ const D = {
 };
 
 export default {
-  D: D,
+
+  D,
 
   serve: {
     notify: false,
@@ -15,13 +16,11 @@ export default {
     server: {
       baseDir: './',
       index: `${D.DEST}${D.PATH}/`,
-      routes: (() => {
-        let obj = {};
-        obj[D.PATH] = `${D.DEST}/`;
-        obj[`${D.PATH}/font-name.json`] = `${D.DEST}/font-name.json`;
-        obj[`${D.PATH}/fonts`] = `${D.DEST}/fonts`;
-        return obj;
-      })()
+      routes: {
+        [D.PATH]: `${D.DEST}/`,
+        [`${D.PATH}/font-name.json`]: `${D.DEST}/font-name.json`,
+        [`${D.PATH}/fonts`]: `${D.DEST}/fonts`
+      }
     }
   },
 
@@ -90,8 +89,8 @@ export default {
     src: `${D.DEST}/index.html`,
     dest: `${D.DEST}`,
     replacements: [
-      ['main.js?v', `main.min.js?v${Date.now()}`],
-      ['main.css?v', `main.min.css?v${Date.now()}`]
+      ['main.js?v', `main.min.js?v=${Date.now()}`],
+      ['main.css?v', `main.min.css?v=${Date.now()}`]
     ]
   }
 

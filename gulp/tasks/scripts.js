@@ -5,7 +5,7 @@ import watchify from 'watchify';
 import licensify from 'licensify';
 import source from 'vinyl-source-stream';
 
-import {scripts as conf} from '../conf';
+import { scripts as conf } from '../conf';
 
 const bundler = (isWatch) => {
   let bOpts = conf.browserifyOpts;

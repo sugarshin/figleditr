@@ -1,0 +1,15 @@
+sudo: false
+language: node_js
+node_js:
+  - "0.12"
+branches:
+  only:
+    - master
+cache:
+  directories:
+    - node_modules
+script:
+  - npm run deploy
+env:
+  global:
+    secure: g+pc7R9zrpuU7OoewHbzGHI8nJ+VwF/k0J2ESguDwfnfIouAtCcfTJOHKbjCneBZTKcK5iq5DUlkK6zzmzLfFe6EFSASHO58Q2UvVhy/nIOLZW0feGOxHljFsHAWslLeqmHDlaQpk8wnEyWGYqNNm8mCeg3pdcbF6Gp3brBBzLgg4fsUTm0Q9SShXlkUJTJIC0o0uYKtgiMtectXh/Ja1zCCDfB8kDciI8RtyI1WRNdE938ymQ4n9TNrZeQE1ZsUobhSA014xbBCNz7ty1FcdkFS4Mj/3FvP4DMNMTxxzGwgTev7oceMxQZ008f5p8pvz00TEcsFSz5Wq2R98tVlnM7e0sP3/vEggfdeZXKkV7NSi8QcJcYkXgrQwdvbtv3/4lqLDOuc5YpQ8RS4TR1ce02GM2Y7VLTGU/t3kxWjiNpen2cmwU96KdKhr8qKRGmweHPX0hiDoOQPGQPvw7VhpHST0ePSrUKj/KPSRLEqxqzJVZCUq+yt67gsGJMCfyKGWuxLCWBKGhWBQ0dEQ3RFF38YhFAM3/nLWLmvS+R+tO4HH1770YDh7cW0sDlbmNq2y1DrnsxMt7iHNMyV6uWKqWYG9tlCHjTitk6W3CoHAUp6wqgT8KxuJ/B6vxUk2jhxMmz0j0gnChZ7foR58VDRo26I4KplkZVw9iTHTngl8f8=

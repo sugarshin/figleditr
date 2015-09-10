@@ -11,7 +11,7 @@
   "scripts": {
     "start": "gulp",
     "build": "gulp build",
-    "pub": "git subtree push -P public --squash origin gh-pages"
+    "deploy": "npm run build && gh-pages-deploy-cmd 'public/**/*'"
   },
   "engines": {
     "node": "0.12.x"
@@ -22,6 +22,7 @@
     "browser-sync": "^2.9.3",
     "browserify": "^11.0.1",
     "del": "^2.0.2",
+    "gh-pages-deploy-cmd": "^1.0.1",
     "gulp": "^3.9.0",
     "gulp-jade": "^1.1.0",
     "gulp-load-plugins": "^0.10.0",
