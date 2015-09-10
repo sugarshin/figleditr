@@ -32,6 +32,8 @@
     "gulp-replace": "^0.5.4",
     "gulp-stylus": "^2.0.6",
     "gulp-uglify": "^1.4.1",
+    "gulp-util": "^3.0.6",
+    "licensify": "^2.0.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.2",
     "vinyl-source-stream": "^1.1.0",
