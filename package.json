@@ -10,7 +10,7 @@
   "private": true,
   "scripts": {
     "start": "gulp",
-    "build": "gulp build",
+    "build": "NODE_ENV=production gulp build",
     "deploy": "npm run build && gh-pages-deploy-cmd 'public/**/*'"
   },
   "engines": {
