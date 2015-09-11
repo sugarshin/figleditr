@@ -11,7 +11,7 @@
   "scripts": {
     "start": "gulp",
     "build": "NODE_ENV=production gulp build",
-    "deploy": "gh-pages-deploy-cmd 'public/**/*'"
+    "deploy": "npm run build && gh-pages-deploy-cmd 'public/**/*'"
   },
   "engines": {
     "node": "0.12.x"
@@ -21,7 +21,6 @@
     "babelify": "^6.3.0",
     "browser-sync": "^2.9.3",
     "browserify": "^11.0.1",
-    "del": "^1.2.1",
     "gh-pages-deploy-cmd": "^1.0.1",
     "gulp": "^3.9.0",
     "gulp-jade": "^1.1.0",
@@ -45,6 +44,7 @@
     "babel-runtime": "^5.8.20",
     "bluebird": "^2.10.0",
     "co": "^4.6.0",
+    "del": "^2.0.2",
     "eventemitter3": "^1.1.1",
     "fbjs": "^0.2.1",
     "figlet": "sugarshin/figlet.js",
