@@ -11,7 +11,8 @@
   "scripts": {
     "start": "gulp",
     "build": "NODE_ENV=production gulp build",
-    "deploy": "npm run build && gh-pages-deploy-cmd 'public/**/*'"
+    "ghpages": "gh-pages-deploy-cmd 'public/**/*'",
+    "deploy": "npm run build && npm run ghpages"
   },
   "engines": {
     "node": "4.2.x"

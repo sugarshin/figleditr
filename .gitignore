@@ -29,5 +29,4 @@ build/Release
 node_modules
 
 public/css/main.css
-public/css/octicons.css
 public/js/main.js
