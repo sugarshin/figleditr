@@ -8,6 +8,8 @@ branches:
 cache:
   directories:
   - node_modules
+before_install:
+  - npm update -g npm
 script:
   - npm run deploy
 env:
