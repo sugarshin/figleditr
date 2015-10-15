@@ -1,5 +1,4 @@
 import Promise from 'bluebird';
-import assign from 'object-assign';
 
 import { DEFAULT_STATE } from '../constants';
 
@@ -21,7 +20,7 @@ export default class API {
     return new Promise((resolve, reject) => {
       try {
         const current = localStorage.getItem(NAME) || '{}';
-        const newData = assign({}, JSON.parse(current), data);
+        const newData = Object.assign({}, JSON.parse(current), data);
         localStorage.setItem(NAME, JSON.stringify(newData));
         resolve();
       } catch (err) {

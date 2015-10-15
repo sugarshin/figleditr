@@ -1,5 +1,4 @@
 import Promise from 'bluebird';
-import co from 'co';
 
 import { actions } from '../flux';
 
@@ -21,16 +20,19 @@ export default class ImageReader {
   }
 
   _handleChange(ev) {
-    co(function* () {
-      const imagePaths = yield this._readFilesAsDataURL(ev.target.files);
-      actions.changeBackground(imagePaths[0]);
-    }.bind(this))
-    .catch(err => console.log('ImageReader#_handleChange', err));
+    (async () => {
+      try {
+        const imagePaths = await this._readFilesAsDataURL(ev.target.files);
+        actions.changeBackground(imagePaths[0]);
+      } catch (err) {
+        console.log('ImageReader#_handleChange', err);
+      }
+    })();
   }
 
   _readFilesAsDataURL(files) {
     let fileArray = [];
-    for (let i = 0, l = files.length; i < l; i++) {
+    for (let i = 0, l = files.length; i < l; i+=1) {
       fileArray.push(files.item(i));
     }
 

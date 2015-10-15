@@ -1,5 +1,3 @@
-import co from 'co';
-
 import { actions, store } from '../flux';
 import { ActionTypes, DEFAULT_STATE } from '../constants';
 
@@ -12,10 +10,14 @@ export default class FontSelector {
   constructor(el) {
     this.el = el;
 
-    this._initialized = co(function* () {
-      yield this._createOptions();
-      this.addChangeEvent();
-    }.bind(this));
+    (async () => {
+      try {
+        this._initialized = await this._createOptions();
+        this.addChangeEvent();
+      } catch (err) {
+        console.log('FontSelector#constructor:\n', err);
+      }
+    })();
 
     store.addChangeListener(this._handleChangeStore.bind(this));
   }
@@ -35,10 +37,14 @@ export default class FontSelector {
   _handleChangeStore(type) {
     switch(type) {
       case FETCH_DATA:
-        co(function* () {
-          yield this._initialized;
-          this._setFont();
-        }.bind(this));
+        (async () => {
+          try {
+            await this._initialized;
+            this._setFont();
+          } catch (err) {
+            console.log('FontSelector#_handleChangeStore:\n', err);
+          }
+        })();
         break;
 
       case RESET_DATA:
@@ -59,15 +65,15 @@ export default class FontSelector {
   }
 
   _createOptions() {
-    return co(function* () {
-      const res = yield fetch(`/${name}/font-names.json`);
-      const json = yield res.json();
-      this._appendOption(json);
-    }.bind(this))
-    .catch(err => {
-      console.log('FontSelector#_createOptions', err);
-      alert('ERROR: Failed to read the font names.');
-    });
+    return this._fetchFontNames()
+      .then(fontNames => this._appendOption(fontNames))
+      .catch(err => console.log('FontSelector#_createOptions', err));
+  }
+
+  _fetchFontNames() {
+    return fetch(`/${name}/font-names.json`)
+      .then(res => res.json())
+      .catch(err => console.log('FontSelector#_fetchFontNames', err));
   }
 
   _appendOption(fontNames) {

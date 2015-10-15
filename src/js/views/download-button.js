@@ -1,4 +1,3 @@
-import co from 'co';
 import html2canvas from 'html2canvas';
 import debounce from 'lodash.debounce';
 
@@ -20,11 +19,14 @@ export default class DownloadButton {
   }
 
   _updateDownloadURL() {
-    co(function* () {
-      const canvas = yield html2canvas(this.target);
-      this.el.setAttribute('href', canvas.toDataURL());
-    }.bind(this))
-    .catch(err => console.log('DownloadButton#_updateDownloadURL', err));
+    (async () => {
+      try {
+        const canvas = await html2canvas(this.target);
+        this.el.setAttribute('href', canvas.toDataURL());
+      } catch (err) {
+        console.log('DownloadButton#_updateDownloadURL', err);
+      }
+    })();
   }
 
 }

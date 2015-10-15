@@ -1,4 +1,3 @@
-import assign from 'object-assign';
 import figlet from 'figlet';
 
 import { store } from '../flux';
@@ -30,7 +29,7 @@ export default class Result {
   }
 
   setState(updates) {
-    this.state = assign({}, this.state, updates);
+    this.state = Object.assign({}, this.state, updates);
   }
 
   _handleChangeStore(type) {
