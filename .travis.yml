@@ -1,7 +1,7 @@
 sudo: false
 language: node_js
 node_js:
-  - "4.2"
+- '4.2'
 branches:
   only:
   - master
@@ -9,9 +9,9 @@ cache:
   directories:
   - node_modules
 before_install:
-  - npm update -g npm
-script:
-  - npm run deploy
+- npm update -g npm
+after_success:
+- npm run deploy
 env:
   global:
-    secure: GqCnufM43sohy1nQ8a3WachZSUZ4c5pyI5zMyXDcvv0bAJ7Pl22BK21B9iOm01bfMXOSMgHDPNuOht9C9tv1TVr9bntOJ4bcm+fFDk03EV/3+2I6iz71C6hFmYOW3NJU7bGx/hi7V0xjOiMKeSFNBd1L8zmbmAeaJaxpg+plE83BhBV6I3rcds6QKow5UBxVW5gCrgo/O6pdk9z1zPC5rTQ5hDTfCtnJNf1tXzdmi8dN8JS1vbtbdMtwCW+vAa+0qxGXYBkDXgWJCRjBEJrsJ1NHQ32qPG2+9w213c6lVBovon/AbBnotHJqj516U9cIUlM7c4AT779yYLA8auIn1PLtpxJiOrig/suhNDpXrp8lFUjqN2Z0d+QDuz8Ack1h55xUS5Bm7RK7U5NLzJuFiwuipR8AP4JUu8HORIOAYkRGXFz3F63KE0lnbV6/X2hJqK8DU9RMLaMrSNW34akvCqTsOZY+zWNTKq0eFK7TRZ8HNQ77qK8r6mM1KcmMOhsoK0G8tByWstnMjCUoB8030pymRjrsKt7vpcaqmMxjr4BRWzRS9YLqXBPkqQhSH6SRxg5r3k908k+oppAGSm0l0HhWBat4JY8xabPIekAAN0d1zP/np4RwUvyTe2xWfCCaUUUoo/GEVqgRWW5QQXmYYS5Qbp6/aLS0d/GOGdlwr6I=
+  - secure: jhDZC/I/D8msTHanogW9qAYim5A07huCY+USYsgIO2UE2f+8LSGomNnFJumNJQEOBAXmtikL3RP4puZGqfQXuhuxDz1al1hwzgS6mLvvuVXxuNxEIRBVbxHBjvNFhfOow1xG+hQw/Pj92UYczCajB1lEus5AbJrjoNlB/ltzgkMsbfdWBwnsc0pmu4ftXW4cUFx/zv25T84N4jOyDOvqjCzB1mTuYQjHjzd4gRs6AYu3bIPyfTC8+kl2AKdc2P0pEv4Ll53vmFtxXztxpSuOqNsa1Tvor5SdzAHRT14R6So5+osb8YsR8FO7aammX8z3ez4uRZ+MRSYpGv0OM2LVTk1C9YxtF9EOJ3BSgdhPlOjs0tdU+dBdBFjWgYWOhJKqwxDGJ7SmadjW/W6NjPkVSUunHnEJYHflXYTCfw/sFRPp+0Dz+XdAzyb4lSXNNPL+NYzeTQ6NL5E+zq69EJwiC/0GBaEGChIvyu+5l4uxhYeGPVXhXBsFmQPPMd2Es+LBOupPkh2JwgggeQyB+8jbTDaey+uCNmdy4642ead/zsn9oJ61csNjeFl88zPGAltaNabEaObDpmwL/BkldueZe52C8svIGU8dopdcMU8qqJ4erx/FYHM9n4OvBKpyU72nG25m4y5x15Mgymzi+kjuebNqgsDcq6vnY9+OObGmuVY=
