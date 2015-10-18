@@ -1,30 +1,25 @@
-import { actions, store } from '../flux';
-import { ActionTypes, DEFAULT_STATE, MAX_FONT_SIZE } from '../constants';
+import BaseView from './base-view';
 
-const { FETCH_DATA, RESET_DATA } = ActionTypes;
+export default class IncremateButton extends BaseView {
 
-export default class IncremateButton {
+  constructor(el, redux) {
+    super(el, redux);
 
-  constructor(el, opts) {
-    this.el = el;
-
+    this.handleClick = this.handleClick.bind(this);
     this.addClickEvent();
   }
 
   addClickEvent() {
-    this.el.addEventListener('click', this._handleClick);
+    this.el.addEventListener('click', this.handleClick);
   }
 
   rmClickEvent() {
-    this.el.removeEventListener('click', this._handleClick);
+    this.el.removeEventListener('click', this.handleClick);
   }
 
-  _handleClick() {
-    const current = store.get('size');
-    if (current < MAX_FONT_SIZE) {
-      const size = current + 1;
-      actions.changeSize(size);
-    }
+  handleClick() {
+    const { store, actions } = this.redux;
+    store.dispatch(actions.incrementSize());
   }
 
 }

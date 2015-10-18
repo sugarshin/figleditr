@@ -11,7 +11,7 @@
   "scripts": {
     "start": "gulp",
     "build": "NODE_ENV=production gulp build",
-    "ghpages": "gh-pages-deploy-cmd 'public/**/*'",
+    "ghpages": "gh-pages-deploy-cmd public/**/*",
     "deploy": "npm run build && npm run ghpages",
     "pub": "git subtree push -P public --squash origin gh-pages"
   },
@@ -21,14 +21,15 @@
   "dependencies": {
     "babel-core": "^5.8.25",
     "bluebird": "^2.10.2",
-    "eventemitter3": "^1.1.1",
-    "fbjs": "~0.3.2",
     "figlet": "github:sugarshin/figlet.js",
-    "flux": "^2.1.1",
     "html2canvas": "~0.5.0-alpha2",
     "lodash.debounce": "^3.1.1",
     "lodash.throttle": "^3.0.4",
     "nib": "^1.1.0",
+    "redux": "^3.0.2",
+    "redux-localstorage": "~0.4.0",
+    "redux-logger": "^2.0.4",
+    "redux-thunk": "^1.0.0",
     "whatwg-fetch": "~0.10.0",
     "zeroclipboard": "^2.2.0"
   },

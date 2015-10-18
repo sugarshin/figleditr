@@ -1,20 +1,20 @@
 import html2canvas from 'html2canvas';
 import debounce from 'lodash.debounce';
 
-import { store } from '../flux';
+import BaseView from './base-view';
 
-export default class DownloadButton {
+export default class DownloadButton extends BaseView {
 
-  constructor(el, target) {
-    this.el = el;
+  constructor(el, redux, target) {
+    super(el, redux);
+
     this.target = target;
 
-    this._debouncedHandleChangeStore = debounce(this._handleChangeStore, 1000);
-
-    store.addChangeListener(this._debouncedHandleChangeStore.bind(this));
+    this._updateDownloadURL = debounce(this._updateDownloadURL, 1000);
+    this.addChangeStateListener(this.handleChangeState.bind(this));
   }
 
-  _handleChangeStore() {
+  handleChangeState() {
     this._updateDownloadURL();
   }
 
@@ -24,7 +24,7 @@ export default class DownloadButton {
         const canvas = await html2canvas(this.target);
         this.el.setAttribute('href', canvas.toDataURL());
       } catch (err) {
-        console.log('DownloadButton#_updateDownloadURL', err);
+        console.log('DownloadButton#_updateDownloadURL:\n', err);
       }
     })();
   }

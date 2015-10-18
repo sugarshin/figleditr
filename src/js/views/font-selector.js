@@ -1,89 +1,70 @@
-import { actions, store } from '../flux';
-import { ActionTypes, DEFAULT_STATE } from '../constants';
-
+import BaseView from './base-view';
 import { name } from '../../../package';
 
-const { FETCH_DATA, RESET_DATA } = ActionTypes;
+export default class FontSelector extends BaseView {
 
-export default class FontSelector {
+  constructor(el, redux) {
+    super(el, redux);
 
-  constructor(el) {
-    this.el = el;
+    this.handleChange = this.handleChange.bind(this);
 
     (async () => {
       try {
         this._initialized = await this._createOptions();
+        this.update();
         this.addChangeEvent();
       } catch (err) {
         console.log('FontSelector#constructor:\n', err);
       }
     })();
 
-    store.addChangeListener(this._handleChangeStore.bind(this));
+    this.addChangeStateListener(this.handleChangeState.bind(this));
   }
 
   addChangeEvent() {
-    this.el.addEventListener('change', this._handleChange);
+    this.el.addEventListener('change', this.handleChange);
   }
 
   rmChangeEvent() {
-    this.el.removeEventListener('change', this._handleChange);
+    this.el.removeEventListener('change', this.handleChange);
   }
 
-  _handleChange(ev) {
-    actions.changeFont(ev.target.value);
+  handleChange(ev) {
+    const { store, actions } = this.redux;
+    store.dispatch(actions.changeFont(ev.target.value));
   }
 
-  _handleChangeStore(type) {
-    switch(type) {
-      case FETCH_DATA:
-        (async () => {
-          try {
-            await this._initialized;
-            this._setFont();
-          } catch (err) {
-            console.log('FontSelector#_handleChangeStore:\n', err);
-          }
-        })();
-        break;
-
-      case RESET_DATA:
-        this._setDefault();
-        break;
-
-      default:
-        // noop
+  update() {
+    const nextValue = this.select(this.redux.store.getState(), 'font');
+    if (this.el.value !== nextValue) {
+      this.el.value = nextValue;
     }
   }
 
-  _setFont() {
-    this.el.value = store.get('font');
-  }
-
-  _setDefault() {
-    this.el.value = DEFAULT_STATE.font;
+  handleChangeState() {
+    this.update();
   }
 
   _createOptions() {
     return this._fetchFontNames()
-      .then(fontNames => this._appendOption(fontNames))
-      .catch(err => console.log('FontSelector#_createOptions', err));
+      .then(fontNames => this._appendOptions(fontNames))
+      .catch(err => console.log('FontSelector#_createOptions:\n', err));
   }
 
   _fetchFontNames() {
     return fetch(`/${name}/font-names.json`)
       .then(res => res.json())
-      .catch(err => console.log('FontSelector#_fetchFontNames', err));
+      .catch(err => console.log('FontSelector#_fetchFontNames:\n', err));
   }
 
-  _appendOption(fontNames) {
-    fontNames.forEach(name => {
-      let option = document.createElement('option');
-      if (name === 'Standard') {
+  _appendOptions(fontNames) {
+    fontNames.forEach(fontName => {
+      const option = document.createElement('option');
+      if (fontName === 'Standard') {
         option.setAttribute('selected', true);
       }
-      option.setAttribute('value', name);
-      option.textContent = name;
+      option.setAttribute('value', fontName);
+      option.textContent = fontName;
       this.el.appendChild(option);
     });
   }

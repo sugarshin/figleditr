@@ -1,59 +1,45 @@
-import { actions, store } from '../flux';
-import { ActionTypes, DEFAULT_STATE } from '../constants';
+import BaseView from './base-view';
 
-const { FETCH_DATA, RESET_DATA } = ActionTypes;
+export default class ColorPicker extends BaseView {
 
-export default class ColorPicker {
+  constructor(el, redux, targetAppearance) {
+    super(el, redux);
 
-  constructor(el, opts) {
-    this.el = el;
-    this.opts = opts;
-    this._Target = this.__upcaseFirstLetter(opts.target);
+    this._target = targetAppearance;
+    this._Target = this._upcaseFirstLetter(targetAppearance);
 
-    store.addChangeListener(this._handleChangeStore.bind(this));
-
-    this._boundHandleChange = this._handleChange.bind(this);
+    this.update();
+    this.handleChange = this.handleChange.bind(this);
     this.addChangeEvent();
+    this.addChangeStateListener(this.handleChangeState.bind(this));
   }
 
   addChangeEvent() {
-    this.el.addEventListener('change', this._boundHandleChange);
+    this.el.addEventListener('change', this.handleChange);
   }
 
   rmChangeEvent() {
-    this.el.removeEventListener('change', this._boundHandleChange);
+    this.el.removeEventListener('change', this.handleChange);
   }
 
-  _handleChange(ev) {
-    actions[`change${this._Target}`](ev.target.value);
+  handleChange(ev) {
+    const { store, actions } = this.redux;
+    store.dispatch(actions[`change${this._Target}`](ev.target.value));
   }
 
-  _handleChangeStore(type) {
-    switch(type) {
-      case FETCH_DATA:
-        this._setValue();
-        break;
-
-      case RESET_DATA:
-        this._setDefault();
-        break;
-
-      default:
-        // noop
+  update() {
+    const nextValue = this.select(this.redux.store.getState(), this._target);
+    if (this.el.value !== nextValue) {
+      if (/data\:image\//.test(nextValue)) return;
+      this.el.value = nextValue;
     }
   }
 
-  _setValue() {
-    const value = store.get(this.opts.target);
-    if (/data\:image\//.test(value)) return;
-    this.el.value = value;
+  handleChangeState() {
+    this.update();
   }
 
-  _setDefault() {
-    this.el.value = DEFAULT_STATE[this.opts.target];
-  }
-
-  __upcaseFirstLetter(str) {
+  _upcaseFirstLetter(str) {
     return `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
   }
 

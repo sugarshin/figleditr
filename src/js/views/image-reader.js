@@ -1,60 +1,56 @@
-import Promise from 'bluebird';
+import BaseView from './base-view';
 
-import { actions } from '../flux';
+export default class ImageReader extends BaseView {
 
-export default class ImageReader {
+  constructor(el, redux) {
+    super(el, redux)
 
-  constructor(el) {
-    this.el = el;
-
-    this._boundHandleChange = this._handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.addChangeEvent();
   }
 
   addChangeEvent() {
-    this.el.addEventListener('change', this._boundHandleChange);
+    this.el.addEventListener('change', this.handleChange);
   }
 
   rmChangeEvent() {
-    this.el.removeEventListener('change', this._boundHandleChange);
+    this.el.removeEventListener('change', this.handleChange);
   }
 
-  _handleChange(ev) {
+  handleChange(ev) {
+    const { store, actions } = this.redux;
     (async () => {
       try {
         const imagePaths = await this._readFilesAsDataURL(ev.target.files);
-        actions.changeBackground(imagePaths[0]);
+        store.dispatch(actions.changeBackground(imagePaths[0]));
       } catch (err) {
-        console.log('ImageReader#_handleChange', err);
+        console.log('ImageReader#handleChange:\n', err);
       }
     })();
   }
 
   _readFilesAsDataURL(files) {
     let fileArray = [];
-    for (let i = 0, l = files.length; i < l; i+=1) {
+    for (let i = 0, l = files.length; i < l; i += 1) {
       fileArray.push(files.item(i));
     }
 
+    fileArray = fileArray.filter(file => file.type.match('image.*'));
+
     return Promise.all(
       fileArray.map(file => {
-        if (!file.type.match('image.*')) return false;
-        return this.__readAsDataURL(file);
-      }).filter(promise => promise)
+        return this._readAsDataURL(file);
+      })
     );
   }
 
-  __readAsDataURL(file) {
+  _readAsDataURL(file) {
     return new Promise((resolve, reject) => {
       const fr = new FileReader();
 
-      fr.onload = ev => {
-        resolve(ev.target.result);
-      };
+      fr.onload = ev => resolve(ev.target.result);
 
-      fr.onerror = err => {
-        reject(err);
-      };
+      fr.onerror = err => reject(err);
 
       fr.readAsDataURL(file);
     });

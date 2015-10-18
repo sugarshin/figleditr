@@ -32,7 +32,7 @@ const bundler = (isWatch) => {
           `\n${error.codeFrame}`
         );
       })
-      .pipe(source('main.js'))
+      .pipe(source('index.js'))
       .pipe(gulp.dest(conf.dest));
   };
 

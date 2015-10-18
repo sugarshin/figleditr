@@ -1,24 +1,26 @@
-import { actions } from '../flux';
+import BaseView from './base-view';
 
-export default class ResetButton {
+export default class ResetButton extends BaseView {
 
-  constructor(el) {
-    this.el = el;
+  constructor(el, redux) {
+    super(el, redux);
 
+    this.handleClick = this.handleClick.bind(this);
     this.addClickEvent();
   }
 
   addClickEvent() {
-    this.el.addEventListener('click', this._handleClick);
+    this.el.addEventListener('click', this.handleClick);
   }
 
   rmClickEvent() {
-    this.el.removeEventListener('click', this._handleClick);
+    this.el.removeEventListener('click', this.handleClick);
   }
 
-  _handleClick() {
+  handleClick() {
     if (confirm('Are you sure ?')) {
-      actions.reset();
+      const { store, actions } = this.redux;
+      store.dispatch(actions.resetAppearance());
     }
   }
 

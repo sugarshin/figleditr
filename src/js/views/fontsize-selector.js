@@ -1,73 +1,53 @@
-import { actions, store } from '../flux';
-import {
-  ActionTypes,
-  DEFAULT_STATE,
-  MAX_FONT_SIZE,
-  MIN_FONT_SIZE
-} from '../constants';
-
+import BaseView from './base-view';
+import { MAX_FONT_SIZE, MIN_FONT_SIZE } from '../constants';
 import { name } from '../../../package';
 
-const { FETCH_DATA, RESET_DATA, CHANGE_SIZE } = ActionTypes;
+export default class FontSizeSelector extends BaseView {
 
-export default class FontSelector {
-
-  constructor(el) {
-    this.el = el;
+  constructor(el, redux) {
+    super(el, redux);
 
     this._createOptions();
+
+    this.update();
+    this.handleChange = this.handleChange.bind(this);
     this.addChangeEvent();
 
-    store.addChangeListener(this._handleChangeStore.bind(this));
+    this.addChangeStateListener(this.handleChangeState.bind(this));
   }
 
   addChangeEvent() {
-    this.el.addEventListener('change', this._handleChange);
+    this.el.addEventListener('change', this.handleChange);
   }
 
   rmChangeEvent() {
-    this.el.removeEventListener('change', this._handleChange);
+    this.el.removeEventListener('change', this.handleChange);
   }
 
-  _handleChange(ev) {
+  handleChange(ev) {
+    const { store, actions } = this.redux;
     const val = parseInt(ev.target.value, 10);
-    actions.changeSize(val);
+    store.dispatch(actions.changeSize(val));
   }
 
-  _handleChangeStore(type) {
-    switch(type) {
-      case FETCH_DATA:
-        this._setSize();
-        break;
-
-      case RESET_DATA:
-        this._setDefaultSize();
-        break;
-
-      case CHANGE_SIZE:
-        this._setSize();
-        break;
-
-      default:
-        // noop
+  update() {
+    const nextValue = this.select(this.redux.store.getState(), 'size');
+    if (this.el.value !== nextValue) {
+      this.el.value = nextValue;
     }
   }
 
-  _setSize() {
-    this.el.value = store.get('size');
-  }
-
-  _setDefaultSize() {
-    this.el.value = DEFAULT_STATE.size;
+  handleChangeState() {
+    this.update();
   }
 
   _createOptions() {
-    Array.from({length: MAX_FONT_SIZE + 1}, (v, k) => {
-      if (k >= MIN_FONT_SIZE) return k;
+    Array.from({length: MAX_FONT_SIZE + 1}, (v, i) => {
+      if (i >= MIN_FONT_SIZE) return i;
     })
     .filter(v => v)
     .forEach(size => {
-      let option = document.createElement('option');
+      const option = document.createElement('option');
       option.setAttribute('value', size);
       option.textContent = `${size}px`;
       this.el.appendChild(option);

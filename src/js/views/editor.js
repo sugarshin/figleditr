@@ -1,47 +1,35 @@
 import throttle from 'lodash.throttle';
 
-import { actions, store } from '../flux';
-import { ActionTypes } from '../constants';
+import BaseView from './base-view';
 
-const { FETCH_DATA } = ActionTypes;
+export default class Editor extends BaseView {
 
-export default class Editor {
+  constructor(el, redux) {
+    super(el, redux);
 
-  constructor(el) {
-    this.el = el;
+    this._initializeValue();
 
-    this._throttledHandleInput = throttle(this._handleInput, 500);
+    this.handleInput = throttle(this.handleInput.bind(this), 500);
     this.addInputEvent();
-
-    store.addChangeListener(this._handleChangeStore.bind(this));
 
     this.el.focus();
   }
 
   addInputEvent() {
-    this.el.addEventListener('input', this._throttledHandleInput);
+    this.el.addEventListener('input', this.handleInput);
   }
 
   rmInputEvent() {
-    this.el.removeEventListener('input', this._throttledHandleInput);
+    this.el.removeEventListener('input', this.handleInput);
   }
 
-  _handleInput(ev) {
-    actions.inputText(ev.target.value);
-  }
-
-  _handleChangeStore(type) {
-    switch(type) {
-      case FETCH_DATA:
-        this._initializeValue();
-        break;
-
-      default:
-        // noop
-    }
+  handleInput(ev) {
+    const { store, actions } = this.redux;
+    store.dispatch(actions.inputText(ev.target.value));
   }
 
   _initializeValue() {
-    this.el.value = store.get('text');
+    this.el.value = this.select(this.redux.store.getState(), 'text');
   }
+
 }
