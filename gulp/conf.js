@@ -89,7 +89,7 @@ export default {
     src: `${D.DEST}/index.html`,
     dest: `${D.DEST}`,
     replacements: [
-      ['main.js?v', `main.min.js?v=${Date.now()}`],
+      ['index.js?v', `index.min.js?v=${Date.now()}`],
       ['main.css?v', `main.min.css?v=${Date.now()}`]
     ]
   }
