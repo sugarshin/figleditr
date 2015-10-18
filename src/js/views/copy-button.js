@@ -1,13 +1,16 @@
 import ZeroClipboard from 'zeroclipboard';
 
+import BaseView from './base-view';
+
 ZeroClipboard.config({
   swfPath: 'ZeroClipboard.swf'
 });
 
-export default class CopyButton {
+export default class CopyButton extends BaseView {
 
-  constructor(el, target) {
-    this.el = el;
+  constructor(el, redux, target) {
+    super(el, redux);
+
     this.target = target;
     this.zeroclipboard = new ZeroClipboard(el)
       .on('beforecopy', () => {

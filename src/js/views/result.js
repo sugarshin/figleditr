@@ -1,136 +1,82 @@
 import figlet from 'figlet';
 
-import { store } from '../flux';
-import { ActionTypes } from '../constants';
+import BaseView from './base-view';
 
-const {
-  FETCH_DATA,
-  INPUT_TEXT,
-  CHANGE_FONT,
-  CHANGE_COLOR,
-  CHANGE_BACKGROUND,
-  CHANGE_SIZE,
-  RESET_DATA
-} = ActionTypes;
+export default class Result extends BaseView {
 
-export default class Result {
+  constructor(el, redux) {
+    super(el, redux);
 
-  constructor(el) {
-    let pre = document.createElement('pre');
-    let code = document.createElement('code');
+    this._configureDOM();
+    this.update();
+    this.addChangeStateListener(this.handleChangeStore.bind(this));
+  }
+
+  _configureDOM() {
+    const pre = document.createElement('pre');
+    const code = document.createElement('code');
     pre.appendChild(code);
-    el.appendChild(pre);
+    this.el.appendChild(pre);
     this.codeEl = code;
-    this.el = el;
-
-    this.state = store.getAll();
-
-    store.addChangeListener(this._handleChangeStore.bind(this));
   }
 
-  setState(updates) {
-    this.state = Object.assign({}, this.state, updates);
-  }
+  update() {
+    const { text, font, color, background, size } = this.redux.store.getState();
 
-  _handleChangeStore(type) {
-
-    switch(type) {
-
-      case FETCH_DATA:
-        this.setState(store.getAll());
-        this._updateAll();
-        break;
-
-      case RESET_DATA:
-        const { font, color, background, size } = store.getAll();
-        this.setState({ font, color, background, size });
-        this._updateAll();
-        break;
-
-      case INPUT_TEXT:
-        this.setState({
-          text: store.get('text')
-        });
-        this._update();
-        break;
-
-      case CHANGE_FONT:
-        this.setState({
-          font: store.get('font')
-        });
-        this._update();
-        break;
-
-      case CHANGE_COLOR:
-        this.setState({
-          color: store.get('color')
-        });
-        this._changeColor();
-        break;
-
-      case CHANGE_BACKGROUND:
-        this.setState({
-          background: store.get('background')
-        });
-        this._changeBackground();
-        break;
-
-      case CHANGE_SIZE:
-        this.setState({
-          size: store.get('size')
-        });
-        this._changeSize();
-        break;
-
-      default:
-        // noop
-
+    if (text !== this._currentText ||
+        font !== this._currentFont) {
+      this._changeFiglet(text, font);
     }
 
-  }// _handleChangeStore
+    if (color !== this._currentColor) {
+      this._changeColor(color);
+    }
 
-  _update() {
-    const { text, font } = this.state;
+    if (size !== this._currentSize) {
+      this._changeSize(size);
+    }
+
+    if (background !== this._currentBackground) {
+      this._changeBackground(background);
+    }
+  }
+
+  handleChangeStore() {
+    this.update();
+  }
+
+  _changeFiglet(text, font) {
     figlet(text, {
-      font: font//,
+      font//,
       // horizontalLayout: 'default',
       // verticalLayout: 'default'
     }, (err, data) => {
       if (err) {
-        return console.dir(err);
+        return console.log(err);
       }
+
+      this._currentText = text;
+      this._currentFont = font;
       this.codeEl.textContent = data;
     });
   }
 
-  _changeColor() {
-    const { color } = this.state;
+  _changeColor(color) {
+    this._currentColor = color;
     this.codeEl.style.color = color;
   }
 
-  _changeBackground() {
-    const { background } = this.state;
-    let value;
-
-    if (/data\:image\//.test(background)) {
-      value = `url(${background})`;
-    } else {
-      value = background;
-    }
-
-    this.el.style.background = value;
-  }
-
-  _changeSize() {
-    const { size } = this.state;
+  _changeSize(size) {
+    this._currentSize = size;
     this.codeEl.style.fontSize = `${size}px`;
   }
 
-  _updateAll() {
-    this._update();
-    this._changeColor();
-    this._changeBackground();
-    this._changeSize();
+  _changeBackground(background) {
+    const value = /data\:image\//.test(background) ?
+      `url(${background})` : background;
+
+    this._currentBackground = background;
+    this.el.style.background = value;
   }
 
 }
