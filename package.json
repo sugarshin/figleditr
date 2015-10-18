@@ -38,6 +38,7 @@
     "browser-sync": "^2.9.11",
     "browserify": "^11.2.0",
     "del": "^2.0.2",
+    "envify": "^3.4.0",
     "gh-pages-deploy-cmd": "^1.0.1",
     "gulp": "^3.9.0",
     "gulp-jade": "^1.1.0",
