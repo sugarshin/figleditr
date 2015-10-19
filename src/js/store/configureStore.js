@@ -1,6 +1,8 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import persistState from 'redux-localstorage';
+import persistState, { mergePersistedState } from 'redux-localstorage';
+import adapter from 'redux-localstorage/lib/adapters/localStorage';
+import debounce from 'redux-localstorage-debounce';
 
 import rootReducer from '../reducers';
 
@@ -10,11 +12,19 @@ if (process.env.NODE_ENV !== 'production') {
   middlewares = [...middlewares, require('redux-logger')()];
 }
 
+const reducer = compose(
+  mergePersistedState()
+)(rootReducer);
+
+const storage = compose(
+  debounce(1000)
+)(adapter(global.localStorage));
+
 const finalCreateStore = compose(
   applyMiddleware(...middlewares),
-  persistState(['text', 'appearance'], {key: 'figleditr'})
+  persistState(storage, 'figleditr')
 )(createStore);
 
 export default function configureStore(initialState) {
-  return finalCreateStore(rootReducer, initialState);
+  return finalCreateStore(reducer, initialState);
 }
