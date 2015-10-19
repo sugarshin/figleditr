@@ -35,7 +35,8 @@ export default class FontSelector extends BaseView {
   }
 
   update() {
-    const nextValue = this.select(this.redux.store.getState(), 'font');
+    const appearances = this.select(this.redux.store.getState(), 'appearance');
+    const nextValue = appearances['font'];
     if (this.el.value !== nextValue) {
       this.el.value = nextValue;
     }

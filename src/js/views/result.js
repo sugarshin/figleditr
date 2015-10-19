@@ -21,7 +21,9 @@ export default class Result extends BaseView {
   }
 
   update() {
-    const { text, font, color, background, size } = this.redux.store.getState();
+    const state = this.redux.store.getState();
+    const text = this.select(state, 'text');
+    const { font, color, background, size } = this.select(state, 'appearance');
 
     if (text !== this._currentText ||
         font !== this._currentFont) {

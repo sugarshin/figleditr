@@ -12,7 +12,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const finalCreateStore = compose(
   applyMiddleware(...middlewares),
-  persistState()
+  persistState(['text', 'appearance'], {key: 'figleditr'})
 )(createStore);
 
 export default function configureStore(initialState) {

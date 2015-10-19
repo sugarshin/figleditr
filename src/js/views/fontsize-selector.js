@@ -31,7 +31,8 @@ export default class FontSizeSelector extends BaseView {
   }
 
   update() {
-    const nextValue = this.select(this.redux.store.getState(), 'size');
+    const appearances = this.select(this.redux.store.getState(), 'appearance');
+    const nextValue = appearances['size'];
     if (this.el.value !== nextValue) {
       this.el.value = nextValue;
     }

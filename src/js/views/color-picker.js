@@ -28,7 +28,8 @@ export default class ColorPicker extends BaseView {
   }
 
   update() {
-    const nextValue = this.select(this.redux.store.getState(), this._target);
+    const appearances = this.select(this.redux.store.getState(), 'appearance');
+    const nextValue = appearances[this._target];
     if (this.el.value !== nextValue) {
       if (/data\:image\//.test(nextValue)) return;
       this.el.value = nextValue;

@@ -1,9 +1,11 @@
 export const initialState = {
   text: 'FIGleditr!!',
-  color: '#323b43',
-  background: '#f4f7f9',
-  font: 'Standard',
-  size: 11//,
+  appearance: {
+    color: '#323b43',
+    background: '#f4f7f9',
+    font: 'Standard',
+    size: 11
+  }
   // isFetching: false
 };
 
