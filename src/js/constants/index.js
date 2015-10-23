@@ -1,12 +1,19 @@
 export const initialState = {
-  text: 'FIGleditr!!',
+  figlet: {
+    font: 'Standard',
+    source: 'FIGleditr!!',
+    dest: '',
+    isFetching: false,
+    didInvalidate: false
+  },
+  // text: 'FIGleditr!!',
+  // asciiArtText: '',
   appearance: {
     color: '#323b43',
     background: '#f4f7f9',
-    font: 'Standard',
-    size: 11
+    size: 11,
+    isOpened: true
   }
-  // isFetching: false
 };
 
 export const MAX_FONT_SIZE = 64;

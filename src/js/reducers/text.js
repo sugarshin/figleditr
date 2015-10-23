@@ -1,11 +1,29 @@
 import * as types from '../constants/ActionTypes';
 import { initialState } from '../constants';
 
-export default function text(state = initialState.text, action) {
+export default function figlet(state = initialState.figlet, action) {
   switch (action.type) {
 
-  case types.INPUT_TEXT:
-    return action.text;
+  case types.REQUEST_FIGLET:
+    return Object.assign({}, state, {
+      isFetching: true,
+      didInvalidate: false
+    });
+
+  case types.RECEIVE_FIGLET:
+    const { text, font, dest } = action;
+    return Object.assign({}, state, {
+      isFetching: false,
+      didInvalidate: false,
+      text,
+      font,
+      dest
+    });
+
+  case types.INVALIDATE_FIGLET:
+    return Object.assign({}, state, {
+      didInvalidate: true
+    });
 
   default:
     return state;
