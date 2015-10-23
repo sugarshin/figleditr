@@ -1,17 +1,20 @@
-import { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
+
+import { MAX_FONT_SIZE, MIN_FONT_SIZE } from '../constants';
 
 export default class FontsizeSelect extends Component {
 
   static get propTypes() {
     return {
       actions: PropTypes.objectOf(PropTypes.func).isRequired,
-      maxFontSize: PropTypes.number.isRequired,
-      minFontSize: PropTypes.number.isRequired
+      size: PropTypes.number.isRequired
     };
   }
 
   constructor(props) {
     super(props);
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(ev) {
@@ -21,23 +24,17 @@ export default class FontsizeSelect extends Component {
 
   render() {
     return (
-      <div className="settings-item">
-        <div className="settings-item-title">Font</div>
-        <div className="settings-item-body">
-          <select className="font-select" onChange={this.handleChange.bind(this)}>
-            {this._createOptions()}
-          </select>
-        </div>
-      </div>
+      <select className="font-select" value={this.props.size} onChange={this.handleChange}>
+        {this._createOptions()}
+      </select>
     );
   }
 
   _createOptions() {
-    const { maxFontSize, minFontSize } = this.props;
-    return Array.from({length: maxFontSize - minFontSize}, (v, index) => (
-      index + minFontSize
+    return Array.from({length: MAX_FONT_SIZE - MIN_FONT_SIZE}, (v, index) => (
+      index + MIN_FONT_SIZE
     ))
-    .map(size => <option value={size}>{`${size}px`}</option>);
+    .map(size => <option key={`${size}:${Date.now()}`} value={size}>{`${size}px`}</option>);
   }
 
 }

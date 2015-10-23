@@ -1,22 +1,60 @@
+import html2canvas from 'html2canvas';
+
 import figletAsync from '../utils/figletAsync';
 import * as types from '../constants/ActionTypes';
 
-export function inputText(text) {
+export function fetchCanvasIfNeeded(targetEl) {
   return (dispatch, getState) => {
-    return updateFigletIfNeeded({ font: getState().figlet.font, text });
+    if (shouldFetchCanvas(getState())) {
+      return dispatch(fetchCanvas(targetEl));
+    }
+  };
+}
+
+function shouldFetchCanvas(state) {
+  return state.figlet.isFetchingCanvas ? false : true;
+}
+
+function fetchCanvas(targetEl) {
+  return dispatch => {
+    dispatch(requestCanvas());
+    return html2canvas(targetEl)
+      .then(canvas => dispatch(receiveCanvas(canvas)));
+  };
+}
+
+function requestCanvas() {
+  return { type: types.REQUEST_CANVAS };
+}
+
+function receiveCanvas(canvas) {
+  const downloadImageURL = canvas.toDataURL();
+  return {
+    type: types.RECEIVE_CANVAS,
+    downloadImageURL
+  }
+}
+
+export function inputText(source) {
+  return (dispatch, getState) => {
+    if (shouldUpdateFiglet(getState())) {
+      return dispatch(updateFiglet({ source, font: getState().figlet.font }));
+    }
   };
 }
 
 export function changeFont(font) {
   return (dispatch, getState) => {
-    return updateFigletIfNeeded({ text: getState().figlet.source, font });
+    if (shouldUpdateFiglet(getState())) {
+      return dispatch(updateFiglet({ font, source: getState().figlet.source }));
+    }
   };
 }
 
-function updateFigletIfNeeded({ text, font }) {
+function updateFigletIfNeeded({ source, font }) {
   return (dispatch, getState) => {
     if (shouldUpdateFiglet(getState())) {
-      return dispatch(updateFiglet(text, font));
+      return dispatch(updateFiglet({ source, font }));
     }
   };
 }
@@ -25,22 +63,22 @@ function shouldUpdateFiglet(state) {
   return state.figlet.isFetching ? false : true;
 }
 
-function updateFiglet(text, font) {
+function updateFiglet({ source, font }) {
   return dispatch => {
     dispatch(requestFiglet());
-    return figletAsync(text, { font })
-      .then(asciiArtText => dispatch(receiveFiglet({ text, font, dest: asciiArtText })));
+    return figletAsync(source, { font })
+      .then(asciiArtText => dispatch(receiveFiglet({ source, font, dest: asciiArtText })));
   };
 }
 
 function requestFiglet() {
-  return { type: REQUEST_FIGLET };
+  return { type: types.REQUEST_FIGLET };
 }
 
-function receiveFiglet({ text, font, dest }) {
+function receiveFiglet({ source, font, dest }) {
   return {
     type: types.RECEIVE_FIGLET,
-    text,
+    source,
     font,
     dest
   }

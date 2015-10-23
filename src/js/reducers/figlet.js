@@ -11,11 +11,11 @@ export default function figlet(state = initialState.figlet, action) {
     });
 
   case types.RECEIVE_FIGLET:
-    const { text, font, dest } = action;
+    const { source, font, dest } = action;
     return Object.assign({}, state, {
       isFetching: false,
       didInvalidate: false,
-      text,
+      source,
       font,
       dest
     });

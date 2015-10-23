@@ -4,11 +4,6 @@ import { MAX_FONT_SIZE, MIN_FONT_SIZE, initialState } from '../constants';
 export default function appearance(state = initialState.appearance, action) {
   switch (action.type) {
 
-  case types.CHANGE_FONT:
-    return Object.assign({}, state, {
-      font: action.font
-    });
-
   case types.CHANGE_COLOR:
     return Object.assign({}, state, {
       color: action.color
@@ -37,11 +32,10 @@ export default function appearance(state = initialState.appearance, action) {
       }) : state;
 
   case types.RESET_APPEARANCE:
-    const { color, background, font, size } = initialState.appearance;
+    const { color, background, size } = initialState.appearance;
     return Object.assign({}, state, {
       color,
       background,
-      font,
       size
     });
 

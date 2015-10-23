@@ -1,4 +1,4 @@
-import { PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
 export default function ImageReader({ actions }) {
   return <input type="file" accept="image/*" onChange={ev => handleChange(ev, actions)} />;
@@ -12,7 +12,7 @@ function handleChange(ev, { changeBackground }) {
   (async () => {
     try {
       const imagePaths = await readFilesAsDataURL(ev.target.files);
-      changeBackground(imagePaths[0]));
+      changeBackground(imagePaths[0]);
     } catch (err) {
       console.log('ImageReader#handleChange:\n', err);
     }

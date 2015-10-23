@@ -27,8 +27,8 @@ export default {
   scripts: {
     browserifyOpts: {
       entries: [`./${D.SRC}/js/index.js`],
-      // extensions: ['.coffee'],
-      transform: ['babelify', 'envify']
+      extensions: ['.jsx'],
+      transform: [['babelify', { 'stage': 1 }], 'envify']
     },
     dest: `${D.DEST}/js`
   },

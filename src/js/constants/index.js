@@ -3,11 +3,11 @@ export const initialState = {
     font: 'Standard',
     source: 'FIGleditr!!',
     dest: '',
+    downloadImageURL: '',
     isFetching: false,
-    didInvalidate: false
+    didInvalidate: false,
+    isFetchingCanvas: false
   },
-  // text: 'FIGleditr!!',
-  // asciiArtText: '',
   appearance: {
     color: '#323b43',
     background: '#f4f7f9',

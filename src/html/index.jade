@@ -9,58 +9,59 @@ html
     link(href="//cdnjs.cloudflare.com/ajax/libs/octicons/2.4.1/octicons.min.css" rel="stylesheet")
     link(rel="stylesheet" href="css/main.css?v")
   body
-    header.header
-      h1: a(href="./") figleditr
-      .open-setting-button-wrapper
-        button.open-setting-button.js-open-setting.opend(type="button")
-          span.octicon.octicon-gear
-          span.octicon.octicon-x
-
-    .settings.js-settings.visible
-      .settings-item
-        .settings-item-title Font
-        .settings-item-body: select.js-select.font-select(name="fonts")
-
-      .settings-item
-        .settings-item-title Size
-        .settings-item-body
-          button.resize-button.js-incremate-button(type="button")
-            span.octicon.octicon-plus
-          span.resize-rate 1.0px
-          button.resize-button.js-decremate-button(type="button")
-            span.octicon.octicon-dash
-          .fontsize-selector
-            select.js-fontsize-select(name="font-sizes")
-
-      .settings-item
-        .settings-item-title Color
-        .settings-item-body: input.js-color-picker-for-color(type="color" value="#323b43")
-
-      .settings-item
-        .settings-item-title Background
-        .settings-item-body
-          input.js-color-picker-for-bg(type="color" value="#f4f7f9")
-          br
-          input.js-image-reader(type="file" accept="image/*")
-
-      .reset-button
-        button.js-reset-button(type="button") Reset
-
-    .editor: textarea(class="js-editor")
-
-    .figlet-container
-      .js-figlet.figlet
-      .getter
-        .download-button
-          a.js-download(href="" download="figleditr.png" target="_blank")
-            span.octicon.octicon-cloud-download
-            | Download image
-        .copy-button
-          button.js-copy(type="button")
-            span.octicon.octicon-clippy
-            | Copy to clipboard
-
-    footer.footer
-      p: small &copy; figleditr | github/sugarshin
+    .root
+    //- header.header
+    //-   h1: a(href="./") figleditr
+    //-   .open-setting-button-wrapper
+    //-     button.open-setting-button.js-open-setting.opend(type="button")
+    //-       span.octicon.octicon-gear
+    //-       span.octicon.octicon-x
+    //- 
+    //- .settings.js-settings.visible
+    //-   .settings-item
+    //-     .settings-item-title Font
+    //-     .settings-item-body: select.js-select.font-select(name="fonts")
+    //- 
+    //-   .settings-item
+    //-     .settings-item-title Size
+    //-     .settings-item-body
+    //-       button.resize-button.js-incremate-button(type="button")
+    //-         span.octicon.octicon-plus
+    //-       span.resize-rate 1.0px
+    //-       button.resize-button.js-decremate-button(type="button")
+    //-         span.octicon.octicon-dash
+    //-       .fontsize-selector
+    //-         select.js-fontsize-select(name="font-sizes")
+    //- 
+    //-   .settings-item
+    //-     .settings-item-title Color
+    //-     .settings-item-body: input.js-color-picker-for-color(type="color" value="#323b43")
+    //- 
+    //-   .settings-item
+    //-     .settings-item-title Background
+    //-     .settings-item-body
+    //-       input.js-color-picker-for-bg(type="color" value="#f4f7f9")
+    //-       br
+    //-       input.js-image-reader(type="file" accept="image/*")
+    //- 
+    //-   .reset-button
+    //-     button.js-reset-button(type="button") Reset
+    //- 
+    //- .editor: textarea(class="js-editor")
+    //- 
+    //- .figlet-container
+    //-   .js-figlet.figlet
+    //-   .getter
+    //-     .download-button
+    //-       a.js-download(href="" download="figleditr.png" target="_blank")
+    //-         span.octicon.octicon-cloud-download
+    //-         | Download image
+    //-     .copy-button
+    //-       button.js-copy(type="button")
+    //-         span.octicon.octicon-clippy
+    //-         | Copy to clipboard
+    //- 
+    //- footer.footer
+    //-   p: small &copy; figleditr | github/sugarshin
 
     script(src="js/index.js?v")

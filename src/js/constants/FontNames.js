@@ -193,7 +193,7 @@ export default [
   'Octal',
   'Ogre',
   'Old Banner',
-  'Patorjk's Cheese',
+  'Patorjk\'s Cheese',
   'Patorjk-HeX',
   'Pawp',
   'Peaks Slant',

@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import ToggleSettingButton from './ToggleSettingButton';
 
 export default class Header extends Component {

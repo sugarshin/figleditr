@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import text from './text';
+import figlet from './figlet';
 import appearance from './appearance';
 
 export default combineReducers({
-  text,
+  figlet,
   appearance
 });
