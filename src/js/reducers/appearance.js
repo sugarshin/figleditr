@@ -9,10 +9,23 @@ export default function appearance(state = initialState.appearance, action) {
       color: action.color
     });
 
-  case types.CHANGE_BACKGROUND:
+  case types.CHANGE_BACKGROUND_COLOR:
     return Object.assign({}, state, {
-      background: action.background
+      backgroundColor: action.backgroundColor
     });
+
+  case types.CHANGE_BACKGROUND_IMAGE:
+    return Object.assign({}, state, {
+      backgroundImage: action.backgroundImage
+    });
+
+  case types.DELETE_BACKGROUND_IMAGE:
+    {
+      const { backgroundImage } = initialState.appearance;
+      return Object.assign({}, state, {
+        backgroundImage
+      });
+    }
 
   case types.CHANGE_SIZE:
     return Object.assign({}, state, {
@@ -32,12 +45,15 @@ export default function appearance(state = initialState.appearance, action) {
       }) : state;
 
   case types.RESET_APPEARANCE:
-    const { color, background, size } = initialState.appearance;
-    return Object.assign({}, state, {
-      color,
-      background,
-      size
-    });
+    {
+      const { color, backgroundColor, backgroundImage, size } = initialState.appearance;
+      return Object.assign({}, state, {
+        color,
+        backgroundColor,
+        backgroundImage,
+        size
+      });
+    }
 
   case types.CLOSE_APPEARANCE_PANEL:
     return state.isOpened ?

@@ -6,7 +6,8 @@ export default class Figlet extends Component {
     return {
       actions: PropTypes.objectOf(PropTypes.func).isRequired,
       dest: PropTypes.string.isRequired,
-      background: PropTypes.string.isRequired,
+      backgroundColor: PropTypes.string.isRequired,
+      backgroundImage: PropTypes.string.isRequired,
       size: PropTypes.number.isRequired,
       color: PropTypes.string.isRequired
     };
@@ -16,30 +17,33 @@ export default class Figlet extends Component {
     super(props);
   }
 
-  componentDidUpdate(prevProps) {
-    // console.log('componentDidUpdate', prevProps)
-    this.props.actions.fetchCanvasIfNeeded(this.refs.figlet);
+  componentDidUpdate() {
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('Figlet#componentDidUpdate');
+    }
+
+    this.props.actions.updateDownloadImageURL(this.refs.figlet);
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.dest !== this.props.dest ||
+      nextProps.backgroundColor !== this.props.backgroundColor ||
+      nextProps.backgroundImage !== this.props.backgroundImage ||
+      nextProps.size !== this.props.size ||
+      nextProps.color !== this.props.color;
   }
 
   render() {
-    const { dest, background, size, color } = this.props;
+    const { dest, backgroundColor, backgroundImage, size, color } = this.props;
     return (
-      <div className="figlet" ref="figlet" style={{ background }}>
+      <div className="figlet" ref="figlet" style={{
+        backgroundColor,
+        backgroundImage: backgroundImage === 'none' ?
+          'none' : `url(${backgroundImage})`
+      }}>
         <pre><code style={{ color, fontSize: size }}>{dest}</code></pre>
       </div>
     );
   }
 
 }
-
-    // .figlet-container
-    //   .js-figlet.figlet
-    //   .getter
-    //     .download-button
-    //       a.js-download(href="" download="figleditr.png" target="_blank")
-    //         span.octicon.octicon-cloud-download
-    //         | Download image
-    //     .copy-button
-    //       button.js-copy(type="button")
-    //         span.octicon.octicon-clippy
-    //         | Copy to clipboard

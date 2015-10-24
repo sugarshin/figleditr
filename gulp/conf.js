@@ -18,7 +18,6 @@ export default {
       index: `${D.DEST}${D.PATH}/`,
       routes: {
         [D.PATH]: `${D.DEST}/`,
-        [`${D.PATH}/font-name.json`]: `${D.DEST}/font-name.json`,
         [`${D.PATH}/fonts`]: `${D.DEST}/fonts`
       }
     }
@@ -74,14 +73,6 @@ export default {
     figlet: {
       src: './node_modules/figlet/fonts/**',
       dest: `${D.DEST}/fonts`
-    },
-    json: {
-      src: `./${D.SRC}/*.json`,
-      dest: `${D.DEST}`
-    },
-    zeroclipboard: {
-      src: `./node_modules/zeroclipboard/dist/ZeroClipboard.swf`,
-      dest: `${D.DEST}`
     }
   },
 

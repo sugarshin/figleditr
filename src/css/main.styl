@@ -43,13 +43,6 @@ body
     outline none
     background _dark
     color _light
-    .octicon-x
-      display none
-    &.opend
-      .octicon-gear
-        display none
-      .octicon-x
-        display inline-block
     &:hover
       background _light
       color _dark
@@ -108,6 +101,12 @@ textarea
   padding 2%
   outline none
 
+.delete-background-image-button
+  line-height 1.2
+  .octicon + span
+    margin-left 6px
+    font-size 12px
+
 .reset-button
   margin 2% 0
   text-align right
@@ -116,10 +115,6 @@ textarea
 .figlet-container
   min-height 50%
   position relative
-
-.figlet
-  background-repeat no-repeat
-  background-position center
 
 pre
   margin 0

@@ -13,8 +13,6 @@ gulp.task('predefault', cb => {
       'jade',
       'stylus',
       'copy:fonts-figlet',
-      'copy:json',
-      'copy:zeroclipboard',
       'watchify'
     ],
     'serve',
@@ -40,7 +38,7 @@ gulp.task('default', ['predefault'], () => {
 gulp.task('build', cb => {
   runSequence(
     'clean',
-    ['jade', 'stylus', 'copy:fonts-figlet', 'copy:json', 'copy:zeroclipboard'],
+    ['jade', 'stylus', 'copy:fonts-figlet'],
     ['replace', 'minify-css', 'browserify'],
     'uglify',
     cb

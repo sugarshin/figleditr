@@ -3,10 +3,16 @@ import html2canvas from 'html2canvas';
 import figletAsync from '../utils/figletAsync';
 import * as types from '../constants/ActionTypes';
 
-export function fetchCanvasIfNeeded(targetEl) {
+export function updateDownloadImageURL(el) {
+  return (dispatch, getState) => {
+    return dispatch(fetchCanvasIfNeeded(el));
+  };
+}
+
+function fetchCanvasIfNeeded(el) {
   return (dispatch, getState) => {
     if (shouldFetchCanvas(getState())) {
-      return dispatch(fetchCanvas(targetEl));
+      return dispatch(fetchCanvas(el));
     }
   };
 }
@@ -37,17 +43,19 @@ function receiveCanvas(canvas) {
 
 export function inputText(source) {
   return (dispatch, getState) => {
-    if (shouldUpdateFiglet(getState())) {
-      return dispatch(updateFiglet({ source, font: getState().figlet.font }));
-    }
+    return dispatch(updateFigletIfNeeded({
+      source,
+      font: getState().figlet.font
+    }));
   };
 }
 
 export function changeFont(font) {
   return (dispatch, getState) => {
-    if (shouldUpdateFiglet(getState())) {
-      return dispatch(updateFiglet({ font, source: getState().figlet.source }));
-    }
+    return dispatch(updateFigletIfNeeded({
+      font,
+      source: getState().figlet.source
+    }));
   };
 }
 
@@ -78,9 +86,7 @@ function requestFiglet() {
 function receiveFiglet({ source, font, dest }) {
   return {
     type: types.RECEIVE_FIGLET,
-    source,
-    font,
-    dest
+    payload: { source, font, dest }
   }
 }
 
@@ -88,8 +94,16 @@ export function changeColor(color) {
   return { type: types.CHANGE_COLOR, color };
 }
 
-export function changeBackground(background) {
-  return { type: types.CHANGE_BACKGROUND, background };
+export function changeBackgroundColor(backgroundColor) {
+  return { type: types.CHANGE_BACKGROUND_COLOR, backgroundColor };
+}
+
+export function changeBackgroundImage(backgroundImage) {
+  return { type: types.CHANGE_BACKGROUND_IMAGE, backgroundImage };
+}
+
+export function deleteBackgroundImage() {
+  return { type: types.DELETE_BACKGROUND_IMAGE };
 }
 
 export function changeSize(size) {

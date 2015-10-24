@@ -8,11 +8,12 @@ ImageReader.propTypes = {
   actions: PropTypes.objectOf(PropTypes.func).isRequired
 };
 
-function handleChange(ev, { changeBackground }) {
+function handleChange(ev, { changeBackgroundImage }) {
   (async () => {
     try {
       const imagePaths = await readFilesAsDataURL(ev.target.files);
-      changeBackground(imagePaths[0]);
+      console.log(imagePaths[0])
+      changeBackgroundImage(imagePaths[0]);
     } catch (err) {
       console.log('ImageReader#handleChange:\n', err);
     }
@@ -28,9 +29,7 @@ function readFilesAsDataURL(files) {
   fileArray = fileArray.filter(file => file.type.match('image.*'));
 
   return Promise.all(
-    fileArray.map(file => {
-      return readAsDataURL(file);
-    })
+    fileArray.map(file => readAsDataURL(file))
   );
 }
 

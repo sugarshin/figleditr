@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import ZeroClipboard from 'react-zeroclipboard';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import classnames from 'classnames';
 
 import ToggleSettingButton from '../components/ToggleSettingButton';
 import FontSelect from '../components/FontSelect';
-import Fontsize from '../components/Fontsize';
 import FontsizeSelect from '../components/FontsizeSelect';
 import FontsizeIncremate from '../components/FontsizeIncremate';
 import FontsizeDecremate from '../components/FontsizeDecremate';
@@ -14,6 +15,7 @@ import ResetButton from '../components/ResetButton';
 import Editor from '../components/Editor';
 import Figlet from '../components/Figlet';
 import DownloadButton from '../components/DownloadButton';
+import DeleteBackgroundImageButton from '../components/DeleteBackgroundImageButton';
 
 import * as actions from '../actions';
 
@@ -42,14 +44,27 @@ export default class App extends Component {
           </div>
         </header>
 
-        <div className="settings visible">
-          <FontSelect actions={actions} font={figlet.font} />
-          <Fontsize>
-            <FontsizeIncremate actions={actions} />
-            <span className="resize-rate">1.0px</span>
-            <FontsizeDecremate actions={actions} />
-            <FontsizeSelect actions={actions} size={appearance.size} />
-          </Fontsize>
+        <div className={classnames('settings', {
+          visible: appearance.isOpened
+        })}>
+          <div className="settings-item">
+            <div className="settings-item-title">Font</div>
+            <div className="settings-item-body">
+              <FontSelect actions={actions} font={figlet.font} />
+            </div>
+          </div>
+
+          <div className="settings-item">
+            <div className="settings-item-title">Size</div>
+            <div className="settings-item-body">
+              <FontsizeIncremate actions={actions} />
+              <span className="resize-rate">1.0px</span>
+              <FontsizeDecremate actions={actions} />
+              <div className="fontsize-selector">
+                <FontsizeSelect actions={actions} size={appearance.size} />
+              </div>
+            </div>
+          </div>
 
           <div className="settings-item">
             <div className="settings-item-title">Color</div>
@@ -61,9 +76,12 @@ export default class App extends Component {
           <div className="settings-item">
             <div className="settings-item-title">Background</div>
             <div className="settings-item-body">
-              <ColorPicker target="background" value={appearance.background} actions={actions} />
+              <ColorPicker target="backgroundColor" value={appearance.backgroundColor} actions={actions} />
               <br />
               <ImageReader actions={actions} />
+              <br />
+              {appearance.backgroundImage === 'none' ? null :
+                <DeleteBackgroundImageButton actions={actions} />}
             </div>
           </div>
 
@@ -77,9 +95,19 @@ export default class App extends Component {
         </div>
 
         <div className="figlet-container">
-          <Figlet dest={figlet.dest} background={appearance.background} size={appearance.size} color={appearance.color} actions={actions} />
+          <Figlet dest={figlet.dest} backgroundColor={appearance.backgroundColor} backgroundImage={appearance.backgroundImage} size={appearance.size} color={appearance.color} actions={actions} />
           <div className="getter">
-            <DownloadButton downloadImageURL={figlet.downloadImageURL} />
+            <div className="download-button">
+              <DownloadButton downloadImageURL={figlet.downloadImageURL} actions={actions} />
+            </div>
+            <div className="copy-button">
+              <ZeroClipboard text={figlet.dest}>
+                <button className="button-base">
+                  <span className="octicon octicon-clippy"></span>
+                  <span>Copy to clipboard</span>
+                </button>
+              </ZeroClipboard>
+            </div>
           </div>
         </div>
 
@@ -91,9 +119,3 @@ export default class App extends Component {
     );
   }
 }
-
-        // <IncrementButton actions={actions} />
-        // <DecrementButton {...actions} />
-        // <IncrementAsyncButton {...actions} />
-        // <IncrementByAsyncButton {...actions} />
-        // <span>{count}</span>

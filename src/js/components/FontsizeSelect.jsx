@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import now from 'performance-now';
 
 import { MAX_FONT_SIZE, MIN_FONT_SIZE } from '../constants';
 
@@ -17,6 +18,16 @@ export default class FontsizeSelect extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentDidUpdate() {
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('FontsizeSelect#componentDidUpdate');
+    }
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.size !== this.props.size;
+  }
+
   handleChange(ev) {
     const value = parseInt(ev.target.value, 10);
     this.props.actions.changeSize(value);
@@ -24,7 +35,7 @@ export default class FontsizeSelect extends Component {
 
   render() {
     return (
-      <select className="font-select" value={this.props.size} onChange={this.handleChange}>
+      <select value={this.props.size} onChange={this.handleChange}>
         {this._createOptions()}
       </select>
     );
@@ -34,17 +45,7 @@ export default class FontsizeSelect extends Component {
     return Array.from({length: MAX_FONT_SIZE - MIN_FONT_SIZE}, (v, index) => (
       index + MIN_FONT_SIZE
     ))
-    .map(size => <option key={`${size}:${Date.now()}`} value={size}>{`${size}px`}</option>);
+    .map(size => <option key={`${size}:${now()}`} value={size}>{`${size}px`}</option>);
   }
 
 }
-      // .settings-item
-      //   .settings-item-title Size
-      //   .settings-item-body
-      //     button.resize-button.js-incremate-button(type="button")
-      //       span.octicon.octicon-plus
-      //     span.resize-rate 1.0px
-      //     button.resize-button.js-decremate-button(type="button")
-      //       span.octicon.octicon-dash
-      //     .fontsize-selector
-      //       select.js-fontsize-select(name="font-sizes")

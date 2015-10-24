@@ -1,30 +1,20 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
-export default class ToggleSettingButton extends Component {
+export default function ToggleSettingButton(props) {
+  return (
+    <button className="open-setting-button open-setting-button-opend" type="button" onClick={() => handleClick(props.actions)}>
+      {props.isOpened ?
+        <span className="octicon octicon-x"></span> :
+        <span className="octicon octicon-gear"></span>}
+    </button>
+  );
+}
 
-  static get propTypes() {
-    return {
-      isOpened: PropTypes.bool.isRequired,
-      actions: PropTypes.objectOf(PropTypes.func).isRequired
-    };
-  }
+ToggleSettingButton.propTypes = {
+  isOpened: PropTypes.bool.isRequired,
+  actions: PropTypes.objectOf(PropTypes.func).isRequired
+};
 
-  constructor(props) {
-    super(props);
-  }
-
-  handleClick() {
-    this.props.actions.toggleAppearancePanel();
-  }
-
-  render() {
-    return (
-      <button className="open-setting-button open-setting-button-opend" type="button" onClick={this.handleClick.bind(this)}>
-        {this.props.isOpened ?
-          <span className="octicon octicon-x"></span> :
-          <span className="octicon octicon-gear"></span>}
-      </button>
-    );
-  }
-
+function handleClick({ toggleAppearancePanel }) {
+  toggleAppearancePanel();
 }

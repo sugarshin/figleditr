@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import now from 'performance-now';
 
-import FontNames from '../constants/FontNames';
+import FontNames from '../../font-names';
 
 export default class FontSelect extends Component {
 
@@ -21,22 +22,27 @@ export default class FontSelect extends Component {
     this.props.actions.changeFont(ev.target.value);
   }
 
+  componentDidUpdate() {
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('FontSelect#componentDidUpdate');
+    }
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.font !== this.props.font;
+  }
+
   render() {
     return (
-      <div className="settings-item">
-        <div className="settings-item-title">Font</div>
-        <div className="settings-item-body">
-          <select className="font-select" value={this.props.font} onChange={this.handleChange}>
-            {this._createOptions()}
-          </select>
-        </div>
-      </div>
+      <select className="font-select" value={this.props.font} onChange={this.handleChange}>
+        {this._createOptions()}
+      </select>
     );
   }
 
   _createOptions() {
     return FontNames.map(fontName => (
-      <option key={`${fontName}:${Date.now()}`} value={fontName}>{fontName}</option>
+      <option key={`${fontName}:${now()}`} value={fontName}>{fontName}</option>
     ));
   }
 

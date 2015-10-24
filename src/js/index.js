@@ -2,7 +2,6 @@ import 'babel-core/polyfill';
 import 'whatwg-fetch';
 import Promise from 'bluebird';
 import html2canvas from 'html2canvas';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
