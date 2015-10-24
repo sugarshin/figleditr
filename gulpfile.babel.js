@@ -38,9 +38,8 @@ gulp.task('default', ['predefault'], () => {
 gulp.task('build', cb => {
   runSequence(
     'clean',
-    ['jade', 'stylus', 'copy:fonts-figlet'],
-    ['replace', 'minify-css', 'browserify'],
-    'uglify',
+    ['jade', 'stylus', 'copy:fonts-figlet', 'browserify'],
+    ['replace', 'minify-css', 'uglify'],
     cb
   );
 });
