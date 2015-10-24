@@ -1,6 +1,6 @@
 {
   "name": "figleditr",
-  "description": "figleditr is editor with FIGlet.",
+  "description": "figleditr is editor with FIGlet. on React, Redux architecture.",
   "repository": {
     "type": "git",
     "url": "git@github.com:sugarshin/figleditr.git"
