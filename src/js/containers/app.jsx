@@ -95,7 +95,12 @@ export default class App extends Component {
         </div>
 
         <div className="figlet-container">
-          <Figlet dest={figlet.dest} backgroundColor={appearance.backgroundColor} backgroundImage={appearance.backgroundImage} size={appearance.size} color={appearance.color} actions={actions} />
+          <Figlet dest={figlet.dest}
+                  backgroundColor={appearance.backgroundColor}
+                  backgroundImage={appearance.backgroundImage}
+                  size={appearance.size}
+                  color={appearance.color}
+                  actions={actions} />
           <div className="getter">
             <div className="download-button">
               <DownloadButton downloadImageURL={figlet.downloadImageURL} actions={actions} />
