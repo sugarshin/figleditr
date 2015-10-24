@@ -8,9 +8,9 @@ import rootReducer from '../reducers';
 
 let middlewares = [thunkMiddleware];
 
-// if (process.env.NODE_ENV !== 'production') {
-//   middlewares = [...middlewares, require('redux-logger')()];
-// }
+if (process.env.NODE_ENV !== 'production') {
+  middlewares = [...middlewares, require('redux-logger')()];
+}
 
 const reducer = compose(
   mergePersistedState()
