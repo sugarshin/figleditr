@@ -1,5 +1,5 @@
 import * as types from '../constants/ActionTypes';
-import { initialState } from '../constants';
+import initialState from '../constants/initialState';
 
 export default function figlet(state = initialState.figlet, action) {
   switch (action.type) {

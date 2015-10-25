@@ -1,5 +1,6 @@
 import * as types from '../constants/ActionTypes';
-import { MAX_FONT_SIZE, MIN_FONT_SIZE, initialState } from '../constants';
+import initialState from '../constants/initialState';
+import { MAX_FONT_SIZE, MIN_FONT_SIZE } from '../constants';
 
 export default function appearance(state = initialState.appearance, action) {
   switch (action.type) {
