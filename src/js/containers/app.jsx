@@ -6,6 +6,8 @@ import classnames from 'classnames';
 
 import ToggleSettingButton from '../components/ToggleSettingButton';
 import FontSelect from '../components/FontSelect';
+import HorizontalLayoutSelect from '../components/HorizontalLayoutSelect';
+import VerticalLayoutSelect from '../components/VerticalLayoutSelect';
 import FontsizeSelect from '../components/FontsizeSelect';
 import FontsizeIncremate from '../components/FontsizeIncremate';
 import FontsizeDecremate from '../components/FontsizeDecremate';
@@ -51,7 +53,20 @@ export default class App extends Component {
             <div className="settings-item-title">Font</div>
             <div className="settings-item-body">
               <FontSelect actions={actions} font={figlet.font} />
+              <div className="settings-item-sub">
+                <div className="settings-item-title-sub">Horizontal Layout</div>
+                <HorizontalLayoutSelect
+                  actions={actions}
+                  horizontalLayout={figlet.horizontalLayout}
+                />
+                <div className="settings-item-title-sub">Vertical Layout</div>
+                <VerticalLayoutSelect
+                  actions={actions}
+                  verticalLayout={figlet.verticalLayout}
+                />
+              </div>
             </div>
+
           </div>
 
           <div className="settings-item">

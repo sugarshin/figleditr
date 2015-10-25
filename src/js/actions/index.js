@@ -43,26 +43,56 @@ function receiveCanvas(canvas) {
 
 export function inputText(source) {
   return (dispatch, getState) => {
+    const state = getState();
     return dispatch(updateFigletIfNeeded({
       source,
-      font: getState().figlet.font
+      font: state.figlet.font,
+      horizontalLayout: state.figlet.horizontalLayout,
+      verticalLayout: state.figlet.verticalLayout
     }));
   };
 }
 
 export function changeFont(font) {
   return (dispatch, getState) => {
+    const state = getState();
     return dispatch(updateFigletIfNeeded({
       font,
-      source: getState().figlet.source
+      source: state.figlet.source,
+      horizontalLayout: state.figlet.horizontalLayout,
+      verticalLayout: state.figlet.verticalLayout
     }));
   };
 }
 
-function updateFigletIfNeeded({ source, font }) {
+export function changeHorizontalLayout(horizontalLayout) {
+  return (dispatch, getState) => {
+    const state = getState();
+    return dispatch(updateFigletIfNeeded({
+      horizontalLayout,
+      verticalLayout: state.figlet.verticalLayout,
+      font: state.figlet.font,
+      source: state.figlet.source
+    }));
+  };
+}
+
+export function changeVerticalLayout(verticalLayout) {
+  return (dispatch, getState) => {
+    const state = getState();
+    return dispatch(updateFigletIfNeeded({
+      verticalLayout,
+      horizontalLayout: state.figlet.horizontalLayout,
+      font: state.figlet.font,
+      source: state.figlet.source
+    }));
+  };
+}
+
+function updateFigletIfNeeded({ source, font, horizontalLayout, verticalLayout }) {
   return (dispatch, getState) => {
     if (shouldUpdateFiglet(getState())) {
-      return dispatch(updateFiglet({ source, font }));
+      return dispatch(updateFiglet({ source, font, horizontalLayout, verticalLayout }));
     }
   };
 }
@@ -71,11 +101,17 @@ function shouldUpdateFiglet(state) {
   return state.figlet.isFetching ? false : true;
 }
 
-function updateFiglet({ source, font }) {
+function updateFiglet({ source, font, horizontalLayout, verticalLayout }) {
   return dispatch => {
     dispatch(requestFiglet());
-    return figletAsync(source, { font })
-      .then(asciiArtText => dispatch(receiveFiglet({ source, font, dest: asciiArtText })));
+    return figletAsync(source, { font, horizontalLayout, verticalLayout })
+      .then(asciiArtText => dispatch(receiveFiglet({
+        source,
+        font,
+        dest: asciiArtText,
+        horizontalLayout,
+        verticalLayout
+      })));
   };
 }
 
@@ -83,10 +119,10 @@ function requestFiglet() {
   return { type: types.REQUEST_FIGLET };
 }
 
-function receiveFiglet({ source, font, dest }) {
+function receiveFiglet({ source, font, dest, horizontalLayout, verticalLayout }) {
   return {
     type: types.RECEIVE_FIGLET,
-    payload: { source, font, dest }
+    payload: { source, font, dest, horizontalLayout, verticalLayout }
   }
 }
 
@@ -120,14 +156,6 @@ export function decrementSize() {
 
 export function resetAppearance() {
   return { type: types.RESET_APPEARANCE };
-}
-
-export function closeAppearancePanel() {
-  return { type: types.CLOSE_APPEARANCE_PANEL };
-}
-
-export function openAppearancePanel() {
-  return { type: types.OPEN_APPEARANCE_PANEL };
 }
 
 export function toggleAppearancePanel() {

@@ -19,6 +19,7 @@ const reducer = compose(
 
 const filterKeys = [
   'figlet.font', 'figlet.source', 'figlet.dest', 'figlet.downloadImageURL',
+  'figlet.horizontalLayout', 'figlet.verticalLayout',
   'appearance'
 ];
 const storage = compose(

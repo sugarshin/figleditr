@@ -1,6 +1,8 @@
 export default {
   figlet: {
     font: 'Standard',
+    horizontalLayout: 'default',
+    verticalLayout: 'default',
     source: 'FIGleditr!!',
     dest: `  _____ ___ ____ _          _ _ _        _ _
  |  ___|_ _/ ___| | ___  __| (_) |_ _ __| | |
