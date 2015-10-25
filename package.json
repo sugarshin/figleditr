@@ -35,6 +35,7 @@
     "redux": "^3.0.4",
     "redux-localstorage": "^1.0.0-rc4",
     "redux-localstorage-debounce": "0.1.0",
+    "redux-localstorage-filter": "0.1.1",
     "redux-logger": "^2.0.4",
     "redux-thunk": "^1.0.0",
     "whatwg-fetch": "0.10.0"
