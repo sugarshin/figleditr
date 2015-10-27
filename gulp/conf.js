@@ -42,15 +42,6 @@ export default {
     }
   },
 
-  jade: {
-    src: [
-      `${D.SRC}/**/*.jade`,
-      `!${D.SRC}/**/_**/*.jade`,
-      `!${D.SRC}/**/_*.jade`
-    ],
-    dest: `${D.DEST}`
-  },
-
   stylus: {
     src: [
       `${D.SRC}/**/*.styl`,
@@ -70,19 +61,14 @@ export default {
   },
 
   copy: {
+    html: {
+      src: `${D.SRC}/index.html`,
+      dest: `${D.DEST}`
+    },
     figlet: {
       src: './node_modules/figlet/fonts/**',
       dest: `${D.DEST}/fonts`
     }
-  },
-
-  replace: {
-    src: `${D.DEST}/index.html`,
-    dest: `${D.DEST}`,
-    replacements: [
-      ['index.js?v', `index.min.js?v=${Date.now()}`],
-      ['main.css?v', `main.min.css?v=${Date.now()}`]
-    ]
   }
 
 }

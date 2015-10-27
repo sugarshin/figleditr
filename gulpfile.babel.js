@@ -10,8 +10,8 @@ requireDir('./gulp/tasks');
 gulp.task('predefault', cb => {
   runSequence(
     [
-      'jade',
       'stylus',
+      'copy:html',
       'copy:fonts-figlet',
       'watchify'
     ],
@@ -21,10 +21,6 @@ gulp.task('predefault', cb => {
 });
 
 gulp.task('default', ['predefault'], () => {
-  gulp.watch(
-    [`./${D.SRC}/**/*.jade`],
-    ['jade', reload]
-  );
   gulp.watch(
     [`./${D.SRC}/**/*.styl`],
     ['stylus', reload]
@@ -38,8 +34,8 @@ gulp.task('default', ['predefault'], () => {
 gulp.task('build', cb => {
   runSequence(
     'clean',
-    ['jade', 'stylus', 'copy:fonts-figlet', 'browserify'],
-    ['replace', 'minify-css', 'uglify'],
+    ['stylus', 'copy:html', 'copy:fonts-figlet', 'browserify'],
+    ['minify-css', 'uglify'],
     cb
   );
 });
