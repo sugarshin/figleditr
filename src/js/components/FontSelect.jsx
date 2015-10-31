@@ -5,12 +5,10 @@ import FontNames from '../../font-names';
 
 export default class FontSelect extends Component {
 
-  static get propTypes() {
-    return {
-      actions: PropTypes.objectOf(PropTypes.func).isRequired,
-      font: PropTypes.string.isRequired
-    };
-  }
+  static propTypes = {
+    actions: PropTypes.objectOf(PropTypes.func).isRequired,
+    font: PropTypes.string.isRequired
+  };
 
   constructor(props) {
     super(props);

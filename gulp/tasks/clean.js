@@ -4,7 +4,7 @@ import del from 'del';
 import { clean as conf } from '../conf';
 
 gulp.task('clean', cb => {
-  del(conf.path).then(paths => {
+  del(conf.path).then(() => {
     cb();
   });
 });

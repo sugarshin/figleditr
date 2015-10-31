@@ -22,17 +22,23 @@ import DeleteBackgroundImageButton from '../components/DeleteBackgroundImageButt
 import * as actions from '../actions';
 
 const mapStateToProps = state => {
+  // ここで`props`を視覚化したほうが行ったり来たりしなくていいかも
   return { ...state };
 };
 
 const mapDispatchToProps = dispatch => {
+  // bindActionCreators()でそのまま各actionを`props`にマッピングするのは
+  // 小規模のうちはいいかもだけど、多くなると管理しづらくなったり
+  // 名前のバッティングが起こりうる
+  // （そもそも変数、関数を適切に命名していれば起こらないはずだけど）
   return {
     actions: bindActionCreators(actions, dispatch)
   };
 };
 
-@connect(mapStateToProps, mapDispatchToProps)
-export default class App extends Component {
+// @connect(mapStateToProps, mapDispatchToProps)
+/*export default */class App extends Component {
+
   render() {
     const { figlet, appearance, actions } = this.props;
 
@@ -138,4 +144,7 @@ export default class App extends Component {
       </div>
     );
   }
+
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

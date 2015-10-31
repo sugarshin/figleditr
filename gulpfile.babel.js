@@ -3,7 +3,7 @@ import requireDir from 'require-dir';
 import runSequence from 'run-sequence';
 import { reload } from 'browser-sync';
 
-import { D } from './gulp/conf';
+import { DIR } from './gulp/conf';
 
 requireDir('./gulp/tasks');
 
@@ -22,11 +22,11 @@ gulp.task('predefault', cb => {
 
 gulp.task('default', ['predefault'], () => {
   gulp.watch(
-    [`./${D.SRC}/**/*.styl`],
+    [`./${DIR.SRC}/**/*.styl`],
     ['stylus', reload]
   );
   gulp.watch(
-    [`./${D.DEST}/**/*.js`],
+    [`./${DIR.DEST}/**/*.js`],
     reload
   );
 });
@@ -34,7 +34,7 @@ gulp.task('default', ['predefault'], () => {
 gulp.task('build', cb => {
   runSequence(
     'clean',
-    ['stylus', 'copy:html', 'copy:fonts-figlet', 'browserify'],
+    ['htmlReplace', 'stylus', 'copy:fonts-figlet', 'browserify'],
     ['minify-css', 'uglify'],
     cb
   );
