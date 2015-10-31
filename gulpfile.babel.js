@@ -34,7 +34,7 @@ gulp.task('default', ['predefault'], () => {
 gulp.task('build', cb => {
   runSequence(
     'clean',
-    ['stylus', 'copy:html', 'copy:fonts-figlet', 'browserify'],
+    ['htmlReplace', 'stylus', 'copy:fonts-figlet', 'browserify'],
     ['minify-css', 'uglify'],
     cb
   );
