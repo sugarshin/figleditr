@@ -33,6 +33,7 @@ const mapDispatchToProps = dispatch => {
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class App extends Component {
+
   render() {
     const { figlet, appearance, actions } = this.props;
 
@@ -138,4 +139,5 @@ export default class App extends Component {
       </div>
     );
   }
+
 }
