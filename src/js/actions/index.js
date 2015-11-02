@@ -18,7 +18,7 @@ function fetchCanvasIfNeeded(el) {
 }
 
 function shouldFetchCanvas(state) {
-  return state.figlet.isFetchingCanvas ? false : true;
+  return !state.figlet.isFetchingCanvas;
 }
 
 function fetchCanvas(targetEl) {
@@ -38,7 +38,7 @@ function receiveCanvas(canvas) {
   return {
     type: types.RECEIVE_CANVAS,
     downloadImageURL
-  }
+  };
 }
 
 export function inputText(source) {
@@ -98,7 +98,7 @@ function updateFigletIfNeeded({ source, font, horizontalLayout, verticalLayout }
 }
 
 function shouldUpdateFiglet(state) {
-  return state.figlet.isFetching ? false : true;
+  return !state.figlet.isFetching;
 }
 
 function updateFiglet({ source, font, horizontalLayout, verticalLayout }) {
@@ -123,7 +123,7 @@ function receiveFiglet({ source, font, dest, horizontalLayout, verticalLayout })
   return {
     type: types.RECEIVE_FIGLET,
     payload: { source, font, dest, horizontalLayout, verticalLayout }
-  }
+  };
 }
 
 export function changeColor(color) {

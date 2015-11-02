@@ -12,7 +12,7 @@ function handleChange(ev, { changeBackgroundImage }) {
   (async () => {
     try {
       const imagePaths = await readFilesAsDataURL(ev.target.files);
-      console.log(imagePaths[0])
+      console.log(imagePaths[0]);
       changeBackgroundImage(imagePaths[0]);
     } catch (err) {
       console.log('ImageReader#handleChange:\n', err);

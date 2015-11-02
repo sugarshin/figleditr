@@ -42,7 +42,7 @@ export default class FontsizeSelect extends Component {
   }
 
   _createOptions() {
-    return Array.from({length: MAX_FONT_SIZE - MIN_FONT_SIZE}, (v, index) => (
+    return Array.from({ length: MAX_FONT_SIZE - MIN_FONT_SIZE }, (v, index) => (
       index + MIN_FONT_SIZE
     ))
     .map(size => <option key={`${size}:${now()}`} value={size}>{`${size}px`}</option>);

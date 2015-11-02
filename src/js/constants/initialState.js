@@ -14,7 +14,7 @@ export default {
     isFetching: false,
     didInvalidate: false,
     isFetchingCanvas: false,
-    didInvalidateCanvas: false,
+    didInvalidateCanvas: false
   },
   appearance: {
     color: '#323b43',
@@ -23,4 +23,4 @@ export default {
     size: 11,
     isOpened: true
   }
-}
+};
