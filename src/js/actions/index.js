@@ -4,7 +4,7 @@ import figletAsync from '../utils/figletAsync';
 import * as types from '../constants/ActionTypes';
 
 export function updateDownloadImageURL(el) {
-  return (dispatch, getState) => {
+  return dispatch => {
     return dispatch(fetchCanvasIfNeeded(el));
   };
 }
