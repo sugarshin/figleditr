@@ -12,8 +12,6 @@ export default class FontSelect extends Component {
 
   constructor(props) {
     super(props);
-
-    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(ev) {
@@ -32,7 +30,7 @@ export default class FontSelect extends Component {
 
   render() {
     return (
-      <select className="font-select" value={this.props.font} onChange={this.handleChange}>
+      <select className="font-select" value={this.props.font} onChange={::this.handleChange}>
         {this._createOptions()}
       </select>
     );

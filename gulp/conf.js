@@ -21,13 +21,7 @@ export const scripts = {
   browserifyOpts: {
     entries: [`./${DIR.SRC}/js/index.js`],
     extensions: ['.jsx'],
-    transform: [['babelify', {
-      presets: ['es2015', 'stage-0', 'react']//,
-      // plugins: [
-      //   'syntax-object-rest-spread',
-      //   'syntax-decorators'
-      // ]
-    }], 'envify']
+    transform: [['babelify', { stage: 0 }], 'envify']
   },
   dest: `${DIR.DEST}/js`
 };
@@ -60,11 +54,6 @@ export const clean = {
   path: [`${DIR.DEST}`]
 };
 
-export const htmlReplace = {
-  src: `${DIR.SRC}/index.html`,
-  dest: `${DIR.DEST}`
-};
-
 export const copy = {
   html: {
     src: `${DIR.SRC}/index.html`,
@@ -74,4 +63,9 @@ export const copy = {
     src: './node_modules/figlet/fonts/**',
     dest: `${DIR.DEST}/fonts`
   }
+};
+
+export const htmlReplace = {
+  src: `${DIR.SRC}/index.html`,
+  dest: `${DIR.DEST}`
 };

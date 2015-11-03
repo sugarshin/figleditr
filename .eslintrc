@@ -1,0 +1,4 @@
+{
+  "extends": "sugarshin/react",
+  "plugins": "babel"
+}

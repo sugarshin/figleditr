@@ -5,17 +5,13 @@ import { MAX_FONT_SIZE, MIN_FONT_SIZE } from '../constants';
 
 export default class FontsizeSelect extends Component {
 
-  static get propTypes() {
-    return {
-      actions: PropTypes.objectOf(PropTypes.func).isRequired,
-      size: PropTypes.number.isRequired
-    };
-  }
+  static propTypes = {
+    actions: PropTypes.objectOf(PropTypes.func).isRequired,
+    size: PropTypes.number.isRequired
+  };
 
   constructor(props) {
     super(props);
-
-    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidUpdate() {
@@ -35,14 +31,14 @@ export default class FontsizeSelect extends Component {
 
   render() {
     return (
-      <select value={this.props.size} onChange={this.handleChange}>
+      <select value={this.props.size} onChange={::this.handleChange}>
         {this._createOptions()}
       </select>
     );
   }
 
   _createOptions() {
-    return Array.from({length: MAX_FONT_SIZE - MIN_FONT_SIZE}, (v, index) => (
+    return Array.from({ length: MAX_FONT_SIZE - MIN_FONT_SIZE }, (v, index) => (
       index + MIN_FONT_SIZE
     ))
     .map(size => <option key={`${size}:${now()}`} value={size}>{`${size}px`}</option>);

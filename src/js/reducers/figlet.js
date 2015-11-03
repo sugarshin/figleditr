@@ -12,8 +12,11 @@ export default function figlet(state = initialState.figlet, action) {
 
   case types.RECEIVE_FIGLET:
     {
-      const { source, font, dest, horizontalLayout, verticalLayout } = action.payload;
-      console.log(verticalLayout)
+      const { source,
+              font,
+              dest,
+              horizontalLayout,
+              verticalLayout } = action.payload;
       return Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,
