@@ -21,7 +21,7 @@ export const scripts = {
   browserifyOpts: {
     entries: [`./${DIR.SRC}/js/index.js`],
     extensions: ['.jsx'],
-    transform: [['babelify', { stage: 1 }], 'envify']
+    transform: [['babelify', { stage: 0 }], 'envify']
   },
   dest: `${DIR.DEST}/js`
 };

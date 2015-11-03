@@ -2,16 +2,14 @@ import React, { Component, PropTypes } from 'react';
 
 export default class Figlet extends Component {
 
-  static get propTypes() {
-    return {
-      actions: PropTypes.objectOf(PropTypes.func).isRequired,
-      dest: PropTypes.string.isRequired,
-      backgroundColor: PropTypes.string.isRequired,
-      backgroundImage: PropTypes.string.isRequired,
-      size: PropTypes.number.isRequired,
-      color: PropTypes.string.isRequired
-    };
-  }
+  static propTypes = {
+    actions: PropTypes.objectOf(PropTypes.func).isRequired,
+    dest: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
+    size: PropTypes.number.isRequired,
+    color: PropTypes.string.isRequired
+  };
 
   constructor(props) {
     super(props);

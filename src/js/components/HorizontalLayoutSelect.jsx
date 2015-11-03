@@ -2,17 +2,13 @@ import React, { Component, PropTypes } from 'react';
 
 export default class HorizontalLayoutSelect extends Component {
 
-  static get propTypes() {
-    return {
-      actions: PropTypes.objectOf(PropTypes.func).isRequired,
-      horizontalLayout: PropTypes.string.isRequired
-    };
-  }
+  static propTypes = {
+    actions: PropTypes.objectOf(PropTypes.func).isRequired,
+    horizontalLayout: PropTypes.string.isRequired
+  };
 
   constructor(props) {
     super(props);
-
-    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(ev) {
@@ -31,7 +27,7 @@ export default class HorizontalLayoutSelect extends Component {
 
   render() {
     return (
-      <select className="layout-select" value={this.props.horizontalLayout} onChange={this.handleChange}>
+      <select className="layout-select" value={this.props.horizontalLayout} onChange={::this.handleChange}>
         <option value="default">Default</option>
         <option value="full">Full</option>
         <option value="fitted">Fitted</option>
