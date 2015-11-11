@@ -1,10 +1,10 @@
-export const DIR = {
+const DIR = module.exports.DIR = {
   SITE_ROOT_PATH: '/figleditr',
   SRC: 'src',
   DEST: 'public'
 };
 
-export const serve = {
+module.exports.serve = {
   notify: false,
   startPath: DIR.SITE_ROOT_PATH,
   server: {
@@ -17,16 +17,21 @@ export const serve = {
   }
 };
 
-export const scripts = {
+module.exports.scripts = {
   browserifyOpts: {
     entries: [`./${DIR.SRC}/js/index.js`],
     extensions: ['.jsx'],
-    transform: [['babelify', { stage: 0 }], 'envify']
+    transform: [
+      ['babelify', {
+        presets: ['es2015', 'stage-0', 'react']
+      }],
+      'envify'
+    ]
   },
   dest: `${DIR.DEST}/js`
 };
 
-export const uglify = {
+module.exports.uglify = {
   src: `./${DIR.DEST}/js/index.js`,
   dest: `${DIR.DEST}/js`,
   opts: {
@@ -36,7 +41,7 @@ export const uglify = {
   }
 };
 
-export const stylus = {
+module.exports.stylus = {
   src: [
     `${DIR.SRC}/**/*.styl`,
     `!${DIR.SRC}/**/_**/*.styl`,
@@ -45,16 +50,16 @@ export const stylus = {
   dest: `${DIR.DEST}/css`
 };
 
-export const minifyCss = {
+module.exports.minifyCss = {
   src: `${DIR.DEST}/css/main.css`,
   dest: `${DIR.DEST}/css`
 };
 
-export const clean = {
+module.exports.clean = {
   path: [`${DIR.DEST}`]
 };
 
-export const copy = {
+module.exports.copy = {
   html: {
     src: `${DIR.SRC}/index.html`,
     dest: `${DIR.DEST}`
@@ -65,7 +70,7 @@ export const copy = {
   }
 };
 
-export const htmlReplace = {
+module.exports.htmlReplace = {
   src: `${DIR.SRC}/index.html`,
   dest: `${DIR.DEST}`
 };

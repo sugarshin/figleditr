@@ -30,3 +30,4 @@ node_modules
 
 public/css/main.css
 public/js/index.js
+.eslintcache

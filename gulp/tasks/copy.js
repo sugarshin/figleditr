@@ -1,6 +1,6 @@
-import gulp from 'gulp';
+const gulp = require('gulp');
 
-import { copy as conf } from '../conf';
+const conf = require('../conf').copy;
 
 gulp.task('copy:html', () => {
   return gulp.src(conf.html.src)

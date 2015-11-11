@@ -1,15 +1,15 @@
-import gulp from 'gulp';
-import gutil from 'gulp-util';
-import browserify from 'browserify';
-import watchify from 'watchify';
-import licensify from 'licensify';
-import source from 'vinyl-source-stream';
+const gulp = require('gulp');
+const gutil = require('gulp-util');
+const browserify = require('browserify');
+const watchify = require('watchify');
+const licensify = require('licensify');
+const source = require('vinyl-source-stream');
 
-import { scripts as conf } from '../conf';
+const conf = require('../conf').scripts;
 
 const bundler = (isWatch) => {
-  let bOpts = conf.browserifyOpts;
-  let b;
+  const bOpts = conf.browserifyOpts;
+  var b;
 
   if (isWatch) {
     // bOpts.debug = true
@@ -28,8 +28,7 @@ const bundler = (isWatch) => {
       .on('error', error => {
         gutil.log(
           gutil.colors.bgRed.white.bold('BUNDLE ERROR'),
-          error.message,
-          `\n${error.codeFrame}`
+          error.message
         );
       })
       .pipe(source('index.js'))

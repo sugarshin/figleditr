@@ -21,23 +21,14 @@ import DeleteBackgroundImageButton from '../components/DeleteBackgroundImageButt
 
 import * as actions from '../actions';
 
-const mapStateToProps = state => {
-  // ここで`props`を視覚化したほうが行ったり来たりしなくていいかも
-  return { ...state };
-};
+const mapStateToProps = state => ({ ...state });
 
-const mapDispatchToProps = dispatch => {
-  // bindActionCreators()でそのまま各actionを`props`にマッピングするのは
-  // 小規模のうちはいいかもだけど、多くなると管理しづらくなったり
-  // 名前のバッティングが起こりうる
-  // （そもそも変数、関数を適切に命名していれば起こらないはずだけど）
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(actions, dispatch)
+});
 
-@connect(mapStateToProps, mapDispatchToProps)
-export default class App extends Component {
+// @connect(mapStateToProps, mapDispatchToProps)
+class App extends Component {
 
   render() {
     /* its ok undefined propTypes Smart Component */

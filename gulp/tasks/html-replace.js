@@ -1,7 +1,7 @@
-import gulp from 'gulp';
+const gulp = require('gulp');
 
-import { htmlReplace } from '../plugins';
-import { htmlReplace as conf } from '../conf';
+const htmlReplace = require('../plugins').htmlReplace;
+const conf = require('../conf').htmlReplace;
 
 gulp.task('htmlReplace', () => {
   return gulp.src(conf.src)
