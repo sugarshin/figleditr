@@ -77,5 +77,9 @@ module.exports.copy = {
 
 module.exports.htmlReplace = {
   src: `${DIR.SRC}/index.html`,
-  dest: `${DIR.DEST}`
+  dest: `${DIR.DEST}`,
+  target: {
+    css: 'css/index.min.css',
+    js: 'js/index.min.js'
+  }
 };

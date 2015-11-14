@@ -5,9 +5,6 @@ const conf = require('../conf').htmlReplace;
 
 gulp.task('htmlReplace', () => {
   return gulp.src(conf.src)
-    .pipe(htmlReplace({
-      css: 'css/main.min.css',
-      js: 'js/index.min.js'
-    }))
+    .pipe(htmlReplace(conf.target))
     .pipe(gulp.dest(conf.dest));
 });
