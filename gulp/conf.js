@@ -48,7 +48,11 @@ module.exports.stylus = {
     `!${DIR.SRC}/**/_**/*.styl`,
     `!${DIR.SRC}/**/_*.styl`
   ],
-  dest: `${DIR.DEST}/css`
+  dest: `${DIR.DEST}/css`,
+  opts: {
+    include: `${process.cwd()}/node_modules`,
+    compress: true
+  }
 };
 
 module.exports.minifyCss = {

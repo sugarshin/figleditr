@@ -1,0 +1,44 @@
+.settings
+  display none
+  position absolute
+  width 37.5%
+  background-color $color_dark
+  right 0
+  padding 1% 2%
+  z-index 32
+  &.visible
+    display block
+
+  &-item
+    line-height 2
+    padding 0 0 16px
+    margin-bottom 16px
+    border-bottom 1px solid $color_middle
+    width 100%
+    &-title, &-title-sub
+      margin-right 5%
+      color $color_light
+    &-title-sub
+      font-size 14px
+    &-body
+      width 100%
+      display inline-block
+    &-sub
+      margin-left 1em
+  .font-select
+    width 62.5%
+    max-width 158px
+
+  .resize-button
+    line-height 1
+
+  input
+    cursor pointer
+    max-width 100%
+    box-sizing border-box
+    &[type="file"]
+      color $color_light
+  .resize-rate
+    color $color_light
+    font-size .9em
+    margin 0 .5em

@@ -10,7 +10,7 @@ requireDir('./gulp/tasks');
 gulp.task('predefault', cb => {
   runSequence(
     [
-      'stylus',
+      'stylus-nib',
       'copy:html',
       'copy:fonts-figlet',
       'watchify'
@@ -23,7 +23,7 @@ gulp.task('predefault', cb => {
 gulp.task('default', ['predefault'], () => {
   gulp.watch(
     [`./${DIR.SRC}/**/*.styl`],
-    ['stylus', reload]
+    ['stylus-nib', reload]
   );
   gulp.watch(
     [`./${DIR.DEST}/**/*.js`],
@@ -34,7 +34,7 @@ gulp.task('default', ['predefault'], () => {
 gulp.task('build', cb => {
   runSequence(
     'clean',
-    ['htmlReplace', 'stylus', 'copy:fonts-figlet', 'browserify'],
+    ['htmlReplace', 'stylus-nib', 'copy:fonts-figlet', 'browserify'],
     ['minify-css', 'uglify'],
     cb
   );
