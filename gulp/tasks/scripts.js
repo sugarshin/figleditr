@@ -7,7 +7,7 @@ const source = require('vinyl-source-stream');
 
 const conf = require('../conf').scripts;
 
-const bundler = (isWatch) => {
+const bundler = isWatch => {
   const bOpts = conf.browserifyOpts;
   var b;
 

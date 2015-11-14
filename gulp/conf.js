@@ -23,6 +23,7 @@ module.exports.scripts = {
     extensions: ['.jsx'],
     transform: [
       ['babelify', {
+        babelrc: false,
         presets: ['es2015', 'stage-0', 'react']
       }],
       'envify'
