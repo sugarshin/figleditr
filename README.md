@@ -12,5 +12,5 @@ MIT
 
 © sugarshin
 
-[travis-image]: http://img.shields.io/travis/sugarshin/routeur/master.svg?branch=master
-[travis-url]: https://travis-ci.org/sugarshin/routeur
+[travis-image]: http://img.shields.io/travis/sugarshin/figleditr/master.svg?branch=master
+[travis-url]: https://travis-ci.org/sugarshin/figleditr
