@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import now from 'performance-now';
 
-import FontNames from '../../font-names';
+import fontNames from '../constants/fontNames';
 
 export default class FontSelect extends Component {
 
@@ -37,7 +37,7 @@ export default class FontSelect extends Component {
   }
 
   _createOptions() {
-    return FontNames.map(fontName => (
+    return fontNames.map(fontName => (
       <option key={`${fontName}:${now()}`} value={fontName}>{fontName}</option>
     ));
   }
