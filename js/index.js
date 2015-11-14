@@ -33997,297 +33997,6 @@ module.exports = exports["default"];
 })();
 
 },{}],425:[function(require,module,exports){
-module.exports=[
-  "1Row",
-  "3-D",
-  "3D Diagonal",
-  "3D-ASCII",
-  "3x5",
-  "4Max",
-  "5 Line Oblique",
-  "AMC 3 Line",
-  "AMC 3 Liv1",
-  "AMC AAA01",
-  "AMC Neko",
-  "AMC Razor",
-  "AMC Razor2",
-  "AMC Slash",
-  "AMC Slider",
-  "AMC Thin",
-  "AMC Tubes",
-  "AMC Untitled",
-  "ANSI Shadow",
-  "ASCII New Roman",
-  "Acrobatic",
-  "Alligator",
-  "Alligator2",
-  "Alpha",
-  "Alphabet",
-  "Arrows",
-  "Avatar",
-  "B1FF",
-  "Banner",
-  "Banner3-D",
-  "Banner3",
-  "Banner4",
-  "Barbwire",
-  "Basic",
-  "Bear",
-  "Bell",
-  "Benjamin",
-  "Big Chief",
-  "Big Money-ne",
-  "Big Money-nw",
-  "Big Money-se",
-  "Big Money-sw",
-  "Big",
-  "Bigfig",
-  "Binary",
-  "Block",
-  "Blocks",
-  "Bloody*",
-  "Bolger",
-  "Braced",
-  "Bright",
-  "Broadway KB",
-  "Broadway",
-  "Bubble",
-  "Bulbhead",
-  "Caligraphy",
-  "Caligraphy2",
-  "Calvin S",
-  "Cards",
-  "Catwalk",
-  "Chiseled",
-  "Chunky",
-  "Coinstak",
-  "Cola",
-  "Colossal",
-  "Computer",
-  "Contessa",
-  "Contrast",
-  "Cosmike",
-  "Crawford",
-  "Crawford2",
-  "Crazy",
-  "Cricket",
-  "Cursive",
-  "Cyberlarge",
-  "Cybermedium",
-  "Cybersmall",
-  "Cygnet",
-  "DANC4",
-  "DOS Rebel",
-  "DWhistled",
-  "Dancing Font",
-  "Decimal",
-  "Def Leppard",
-  "Delta Corps Priest 1",
-  "Diamond",
-  "Diet Cola",
-  "Digital",
-  "Doh",
-  "Doom",
-  "Dot Matrix",
-  "Double Shorts",
-  "Double",
-  "Dr Pepper",
-  "Efti Chess",
-  "Efti Font",
-  "Efti Italic",
-  "Efti Piti",
-  "Efti Robot",
-  "Efti Wall",
-  "Efti Water",
-  "Electronic",
-  "Elite",
-  "Epic",
-  "Fender",
-  "Filter",
-  "Fire Font-k",
-  "Fire Font-s",
-  "Flipped",
-  "Flower Power",
-  "Four Tops",
-  "Fraktur",
-  "Fun Face",
-  "Fun Faces",
-  "Fuzzy",
-  "Georgi16",
-  "Georgia11",
-  "Ghost",
-  "Ghoulish",
-  "Glenyn",
-  "Goofy",
-  "Gothic",
-  "Graceful",
-  "Gradient",
-  "Graffiti",
-  "Greek",
-  "Heart Left",
-  "Heart Right",
-  "Henry 3D",
-  "Hex",
-  "Hieroglyphs",
-  "Hollywood",
-  "Horizontal Left",
-  "Horizontal Right",
-  "ICL-1900",
-  "Impossible",
-  "Invita",
-  "Isometric1",
-  "Isometric2",
-  "Isometric3",
-  "Isometric4",
-  "Italic",
-  "Ivrit",
-  "JS Block Letters",
-  "JS Bracket Letters",
-  "JS Capital Curves",
-  "JS Cursive",
-  "JS Stick Letters",
-  "Jacky",
-  "Jazmine",
-  "Jerusalem",
-  "Katakana",
-  "Kban",
-  "Keyboard",
-  "Knob",
-  "Konto Slant",
-  "Konto",
-  "LCD",
-  "Larry 3D 2",
-  "Larry 3D",
-  "Lean",
-  "Letters",
-  "Lil Devil",
-  "Line Blocks",
-  "Linux",
-  "Lockergnome",
-  "Madrid",
-  "Marquee",
-  "Maxfour",
-  "Merlin1",
-  "Merlin2",
-  "Mike",
-  "Mini",
-  "Mirror",
-  "Mnemonic",
-  "Modular",
-  "Morse",
-  "Morse2",
-  "Moscow",
-  "Mshebrew210",
-  "Muzzle",
-  "NScript",
-  "NT Greek",
-  "NV Script",
-  "Nancyj-Fancy",
-  "Nancyj-Improved",
-  "Nancyj-Underlined",
-  "Nancyj",
-  "Nipples",
-  "O8",
-  "OS2",
-  "Octal",
-  "Ogre",
-  "Old Banner",
-  "Patorjk's Cheese",
-  "Patorjk-HeX",
-  "Pawp",
-  "Peaks Slant",
-  "Peaks",
-  "Pebbles",
-  "Pepper",
-  "Poison",
-  "Puffy",
-  "Puzzle",
-  "Pyramid",
-  "Rammstein",
-  "Rectangles",
-  "Red Phoenix",
-  "Relief",
-  "Relief2",
-  "Reverse",
-  "Roman",
-  "Rot13",
-  "Rotated",
-  "Rounded",
-  "Rowan Cap",
-  "Rozzo",
-  "Runic",
-  "Runyc",
-  "S Blood",
-  "SL Script",
-  "Santa Clara",
-  "Script",
-  "Serifcap",
-  "Shadow",
-  "Shimrod",
-  "Short",
-  "Slant Relief",
-  "Slant",
-  "Slide",
-  "Small Caps",
-  "Small Isometric1",
-  "Small Keyboard",
-  "Small Poison",
-  "Small Script",
-  "Small Shadow",
-  "Small Slant",
-  "Small Tengwar",
-  "Small",
-  "Soft",
-  "Speed",
-  "Spliff",
-  "Stacey",
-  "Stampate",
-  "Stampatello",
-  "Standard",
-  "Star Strips",
-  "Star Wars",
-  "Stellar",
-  "Stforek",
-  "Stick Letters",
-  "Stop",
-  "Straight",
-  "Stronger Than All",
-  "Sub-Zero",
-  "Swamp Land",
-  "Swan",
-  "Sweet",
-  "THIS",
-  "Tanja",
-  "Tengwar",
-  "Term",
-  "Test1",
-  "The Edge",
-  "Thick",
-  "Thin",
-  "Thorned",
-  "Three Point",
-  "Ticks Slant",
-  "Ticks",
-  "Tiles",
-  "Tinker-Toy",
-  "Tombstone",
-  "Train",
-  "Trek",
-  "Tsalagi",
-  "Tubular",
-  "Twisted",
-  "Two Point",
-  "USA Flag",
-  "Univers",
-  "Varsity",
-  "Wavy",
-  "Weird",
-  "Wet Letter",
-  "Whimsy",
-  "Wow"
-]
-
-},{}],426:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34501,7 +34210,7 @@ function toggleAppearancePanel() {
   return { type: types.TOGGLE_APPEARANCE_PANEL };
 }
 
-},{"../constants/ActionTypes":441,"../utils/figletAsync":450,"html2canvas":227}],427:[function(require,module,exports){
+},{"../constants/ActionTypes":440,"../utils/figletAsync":450,"html2canvas":227}],426:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34538,7 +34247,7 @@ function _upcaseFirstLetter(str) {
   return "" + str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-},{"react":400}],428:[function(require,module,exports){
+},{"react":400}],427:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34577,7 +34286,7 @@ function handleClick(_ref) {
   deleteBackgroundImage();
 }
 
-},{"react":400}],429:[function(require,module,exports){
+},{"react":400}],428:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34608,7 +34317,7 @@ DownloadButton.propTypes = {
   downloadImageURL: _react.PropTypes.string
 };
 
-},{"react":400}],430:[function(require,module,exports){
+},{"react":400}],429:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34642,7 +34351,7 @@ function handleInput(ev, _ref2) {
   inputText(ev.target.value);
 }
 
-},{"react":400}],431:[function(require,module,exports){
+},{"react":400}],430:[function(require,module,exports){
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -34728,7 +34437,7 @@ Figlet.propTypes = {
   color: _react.PropTypes.string.isRequired
 };
 
-},{"react":400}],432:[function(require,module,exports){
+},{"react":400}],431:[function(require,module,exports){
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -34745,7 +34454,7 @@ var _performanceNow = require('performance-now');
 
 var _performanceNow2 = _interopRequireDefault(_performanceNow);
 
-var _fontNames = require('../../font-names');
+var _fontNames = require('../constants/fontNames');
 
 var _fontNames2 = _interopRequireDefault(_fontNames);
 
@@ -34814,7 +34523,7 @@ FontSelect.propTypes = {
   font: _react.PropTypes.string.isRequired
 };
 
-},{"../../font-names":425,"performance-now":259,"react":400}],433:[function(require,module,exports){
+},{"../constants/fontNames":441,"performance-now":259,"react":400}],432:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34850,7 +34559,7 @@ function handleClick(_ref2) {
   decrementSize();
 }
 
-},{"react":400}],434:[function(require,module,exports){
+},{"react":400}],433:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34886,7 +34595,7 @@ function handleClick(_ref2) {
   incrementSize();
 }
 
-},{"react":400}],435:[function(require,module,exports){
+},{"react":400}],434:[function(require,module,exports){
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -34973,7 +34682,7 @@ FontsizeSelect.propTypes = {
   size: _react.PropTypes.number.isRequired
 };
 
-},{"../constants":442,"performance-now":259,"react":400}],436:[function(require,module,exports){
+},{"../constants":442,"performance-now":259,"react":400}],435:[function(require,module,exports){
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -35064,7 +34773,7 @@ HorizontalLayoutSelect.propTypes = {
   horizontalLayout: _react.PropTypes.string.isRequired
 };
 
-},{"react":400}],437:[function(require,module,exports){
+},{"react":400}],436:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35163,7 +34872,7 @@ function readAsDataURL(file) {
   });
 }
 
-},{"react":400}],438:[function(require,module,exports){
+},{"react":400}],437:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35193,7 +34902,7 @@ ResetButton.propTypes = {
   actions: _react.PropTypes.objectOf(_react.PropTypes.func).isRequired
 };
 
-},{"react":400}],439:[function(require,module,exports){
+},{"react":400}],438:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35228,7 +34937,7 @@ function handleClick(_ref) {
   toggleAppearancePanel();
 }
 
-},{"react":400}],440:[function(require,module,exports){
+},{"react":400}],439:[function(require,module,exports){
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -35319,7 +35028,7 @@ VerticalLayoutSelect.propTypes = {
   verticalLayout: _react.PropTypes.string.isRequired
 };
 
-},{"react":400}],441:[function(require,module,exports){
+},{"react":400}],440:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35340,6 +35049,14 @@ var INCREMENT_SIZE = exports.INCREMENT_SIZE = 'INCREMENT_SIZE';
 var DECREMENT_SIZE = exports.DECREMENT_SIZE = 'DECREMENT_SIZE';
 var RESET_APPEARANCE = exports.RESET_APPEARANCE = 'RESET_APPEARANCE';
 var TOGGLE_APPEARANCE_PANEL = exports.TOGGLE_APPEARANCE_PANEL = 'TOGGLE_APPEARANCE_PANEL';
+
+},{}],441:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = ['1Row', '3-D', '3D Diagonal', '3D-ASCII', '3x5', '4Max', '5 Line Oblique', 'AMC 3 Line', 'AMC 3 Liv1', 'AMC AAA01', 'AMC Neko', 'AMC Razor', 'AMC Razor2', 'AMC Slash', 'AMC Slider', 'AMC Thin', 'AMC Tubes', 'AMC Untitled', 'ANSI Shadow', 'ASCII New Roman', 'Acrobatic', 'Alligator', 'Alligator2', 'Alpha', 'Alphabet', 'Arrows', 'Avatar', 'B1FF', 'Banner', 'Banner3-D', 'Banner3', 'Banner4', 'Barbwire', 'Basic', 'Bear', 'Bell', 'Benjamin', 'Big Chief', 'Big Money-ne', 'Big Money-nw', 'Big Money-se', 'Big Money-sw', 'Big', 'Bigfig', 'Binary', 'Block', 'Blocks', 'Bloody*', 'Bolger', 'Braced', 'Bright', 'Broadway KB', 'Broadway', 'Bubble', 'Bulbhead', 'Caligraphy', 'Caligraphy2', 'Calvin S', 'Cards', 'Catwalk', 'Chiseled', 'Chunky', 'Coinstak', 'Cola', 'Colossal', 'Computer', 'Contessa', 'Contrast', 'Cosmike', 'Crawford', 'Crawford2', 'Crazy', 'Cricket', 'Cursive', 'Cyberlarge', 'Cybermedium', 'Cybersmall', 'Cygnet', 'DANC4', 'DOS Rebel', 'DWhistled', 'Dancing Font', 'Decimal', 'Def Leppard', 'Delta Corps Priest 1', 'Diamond', 'Diet Cola', 'Digital', 'Doh', 'Doom', 'Dot Matrix', 'Double Shorts', 'Double', 'Dr Pepper', 'Efti Chess', 'Efti Font', 'Efti Italic', 'Efti Piti', 'Efti Robot', 'Efti Wall', 'Efti Water', 'Electronic', 'Elite', 'Epic', 'Fender', 'Filter', 'Fire Font-k', 'Fire Font-s', 'Flipped', 'Flower Power', 'Four Tops', 'Fraktur', 'Fun Face', 'Fun Faces', 'Fuzzy', 'Georgi16', 'Georgia11', 'Ghost', 'Ghoulish', 'Glenyn', 'Goofy', 'Gothic', 'Graceful', 'Gradient', 'Graffiti', 'Greek', 'Heart Left', 'Heart Right', 'Henry 3D', 'Hex', 'Hieroglyphs', 'Hollywood', 'Horizontal Left', 'Horizontal Right', 'ICL-1900', 'Impossible', 'Invita', 'Isometric1', 'Isometric2', 'Isometric3', 'Isometric4', 'Italic', 'Ivrit', 'JS Block Letters', 'JS Bracket Letters', 'JS Capital Curves', 'JS Cursive', 'JS Stick Letters', 'Jacky', 'Jazmine', 'Jerusalem', 'Katakana', 'Kban', 'Keyboard', 'Knob', 'Konto Slant', 'Konto', 'LCD', 'Larry 3D 2', 'Larry 3D', 'Lean', 'Letters', 'Lil Devil', 'Line Blocks', 'Linux', 'Lockergnome', 'Madrid', 'Marquee', 'Maxfour', 'Merlin1', 'Merlin2', 'Mike', 'Mini', 'Mirror', 'Mnemonic', 'Modular', 'Morse', 'Morse2', 'Moscow', 'Mshebrew210', 'Muzzle', 'NScript', 'NT Greek', 'NV Script', 'Nancyj-Fancy', 'Nancyj-Improved', 'Nancyj-Underlined', 'Nancyj', 'Nipples', 'O8', 'OS2', 'Octal', 'Ogre', 'Old Banner', 'Patorjk\'s Cheese', 'Patorjk-HeX', 'Pawp', 'Peaks Slant', 'Peaks', 'Pebbles', 'Pepper', 'Poison', 'Puffy', 'Puzzle', 'Pyramid', 'Rammstein', 'Rectangles', 'Red Phoenix', 'Relief', 'Relief2', 'Reverse', 'Roman', 'Rot13', 'Rotated', 'Rounded', 'Rowan Cap', 'Rozzo', 'Runic', 'Runyc', 'S Blood', 'SL Script', 'Santa Clara', 'Script', 'Serifcap', 'Shadow', 'Shimrod', 'Short', 'Slant Relief', 'Slant', 'Slide', 'Small Caps', 'Small Isometric1', 'Small Keyboard', 'Small Poison', 'Small Script', 'Small Shadow', 'Small Slant', 'Small Tengwar', 'Small', 'Soft', 'Speed', 'Spliff', 'Stacey', 'Stampate', 'Stampatello', 'Standard', 'Star Strips', 'Star Wars', 'Stellar', 'Stforek', 'Stick Letters', 'Stop', 'Straight', 'Stronger Than All', 'Sub-Zero', 'Swamp Land', 'Swan', 'Sweet', 'THIS', 'Tanja', 'Tengwar', 'Term', 'Test1', 'The Edge', 'Thick', 'Thin', 'Thorned', 'Three Point', 'Ticks Slant', 'Ticks', 'Tiles', 'Tinker-Toy', 'Tombstone', 'Train', 'Trek', 'Tsalagi', 'Tubular', 'Twisted', 'Two Point', 'USA Flag', 'Univers', 'Varsity', 'Wavy', 'Weird', 'Wet Letter', 'Whimsy', 'Wow'];
 
 },{}],442:[function(require,module,exports){
 "use strict";
@@ -35701,7 +35418,7 @@ var App = (function (_Component) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);
 
-},{"../actions":426,"../components/ColorPicker":427,"../components/DeleteBackgroundImageButton":428,"../components/DownloadButton":429,"../components/Editor":430,"../components/Figlet":431,"../components/FontSelect":432,"../components/FontsizeDecremate":433,"../components/FontsizeIncremate":434,"../components/FontsizeSelect":435,"../components/HorizontalLayoutSelect":436,"../components/ImageReader":437,"../components/ResetButton":438,"../components/ToggleSettingButton":439,"../components/VerticalLayoutSelect":440,"classnames":5,"react":400,"react-redux":265,"react-zeroclipboard":270,"redux":415}],445:[function(require,module,exports){
+},{"../actions":425,"../components/ColorPicker":426,"../components/DeleteBackgroundImageButton":427,"../components/DownloadButton":428,"../components/Editor":429,"../components/Figlet":430,"../components/FontSelect":431,"../components/FontsizeDecremate":432,"../components/FontsizeIncremate":433,"../components/FontsizeSelect":434,"../components/HorizontalLayoutSelect":435,"../components/ImageReader":436,"../components/ResetButton":437,"../components/ToggleSettingButton":438,"../components/VerticalLayoutSelect":439,"classnames":5,"react":400,"react-redux":265,"react-zeroclipboard":270,"redux":415}],445:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -35844,7 +35561,7 @@ function appearance() {
   }
 }
 
-},{"../constants":442,"../constants/ActionTypes":441,"../constants/initialState":443}],447:[function(require,module,exports){
+},{"../constants":442,"../constants/ActionTypes":440,"../constants/initialState":443}],447:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35929,7 +35646,7 @@ function figlet() {
   }
 }
 
-},{"../constants/ActionTypes":441,"../constants/initialState":443}],448:[function(require,module,exports){
+},{"../constants/ActionTypes":440,"../constants/initialState":443}],448:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
