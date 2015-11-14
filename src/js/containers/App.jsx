@@ -97,7 +97,8 @@ class App extends Component {
               <br />
               <ImageReader actions={actions} />
               <br />
-              {appearance.backgroundImage === 'none' ? null :
+              {appearance.backgroundImage === 'none' ?
+                null :
                 <DeleteBackgroundImageButton actions={actions} />}
             </div>
           </div>
@@ -144,4 +145,5 @@ class App extends Component {
 
 }
 
+// Decorators are not supported yet in 6.x pending proposal update
 export default connect(mapStateToProps, mapDispatchToProps)(App);
