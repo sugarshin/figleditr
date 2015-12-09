@@ -32812,6 +32812,7 @@ exports.default = {
     isOpened: true
   }
 };
+var rejectKeys = exports.rejectKeys = ['figlet.isFetching', 'figlet.didInvalidate', 'figlet.isFetchingCanvas', 'figlet.didInvalidateCanvas'];
 
 },{}],437:[function(require,module,exports){
 'use strict';
@@ -32898,7 +32899,7 @@ var _DeleteBackgroundImageButton2 = _interopRequireDefault(_DeleteBackgroundImag
 
 var _actions = require('../actions');
 
-var actions = _interopRequireWildcard(_actions);
+var rootActions = _interopRequireWildcard(_actions);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -32916,11 +32917,9 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    actions: (0, _redux.bindActionCreators)(actions, dispatch)
+    actions: (0, _redux.bindActionCreators)(rootActions, dispatch)
   };
 };
-
-// @connect(mapStateToProps, mapDispatchToProps)
 
 var App = (function (_Component) {
   _inherits(App, _Component);
@@ -32934,15 +32933,10 @@ var App = (function (_Component) {
   _createClass(App, [{
     key: 'render',
     value: function render() {
-      /* its ok undefined propTypes Smart Component */
-      /* what should I do actions... */
-      /* eslint-disable react/prop-types, no-shadow */
       var _props = this.props;
       var figlet = _props.figlet;
       var appearance = _props.appearance;
       var actions = _props.actions;
-
-      /* eslint-enable react/prop-types, no-shadow */
 
       return _react2.default.createElement(
         'div',
@@ -33131,8 +33125,6 @@ var App = (function (_Component) {
 
   return App;
 })(_react.Component);
-
-// Decorators are not supported yet in 6.x pending proposal update
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);
 
@@ -33423,6 +33415,8 @@ var _reducers = require('../reducers');
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
+var _initialState = require('../constants/initialState');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -33433,19 +33427,18 @@ if ("production" !== 'production') {
   middlewares = [].concat(_toConsumableArray(middlewares), [require('redux-logger')()]);
 }
 
-var reducer = (0, _redux.compose)((0, _reduxLocalstorage.mergePersistedState)())(_reducers2.default);
+var finalReducer = (0, _redux.compose)((0, _reduxLocalstorage.mergePersistedState)())(_reducers2.default);
 
-var rejectKeys = ['figlet.isFetching', 'figlet.didInvalidate', 'figlet.isFetchingCanvas', 'figlet.didInvalidateCanvas'];
-var storage = (0, _redux.compose)((0, _reduxLocalstorageDebounce2.default)(1000), (0, _reduxLocalstorageReject2.default)(rejectKeys))((0, _localStorage2.default)(global.localStorage));
+var storage = (0, _redux.compose)((0, _reduxLocalstorageDebounce2.default)(1000), (0, _reduxLocalstorageReject2.default)(_initialState.rejectKeys))((0, _localStorage2.default)(global.localStorage));
 
 var finalCreateStore = (0, _redux.compose)(_redux.applyMiddleware.apply(undefined, _toConsumableArray(middlewares)), (0, _reduxLocalstorage2.default)(storage, 'figleditr'))(_redux.createStore);
 
 function configureStore(initialState) {
-  return finalCreateStore(reducer, initialState);
+  return finalCreateStore(finalReducer, initialState);
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../reducers":441,"redux":409,"redux-localstorage":402,"redux-localstorage-debounce":396,"redux-localstorage-reject":397,"redux-localstorage/lib/adapters/localStorage":400,"redux-logger":406,"redux-thunk":407}],443:[function(require,module,exports){
+},{"../constants/initialState":436,"../reducers":441,"redux":409,"redux-localstorage":402,"redux-localstorage-debounce":396,"redux-localstorage-reject":397,"redux-localstorage/lib/adapters/localStorage":400,"redux-logger":406,"redux-thunk":407}],443:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -33459,6 +33452,13 @@ var _figlet2 = _interopRequireDefault(_figlet);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * figletAsync
+ *
+ * @param {String} text
+ * @param {Object} { font, horizontalLayout, verticalLayout }
+ * @returns {Promise}
+ */
 function figletAsync(text, _ref) {
   var font = _ref.font;
   var horizontalLayout = _ref.horizontalLayout;
