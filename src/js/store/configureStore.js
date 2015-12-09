@@ -6,6 +6,7 @@ import debounce from 'redux-localstorage-debounce';
 import reject from 'redux-localstorage-reject';
 
 import rootReducer from '../reducers';
+import { rejectKeys } from '../constants/initialState';
 
 let middlewares = [thunkMiddleware];
 
@@ -13,14 +14,10 @@ if (process.env.NODE_ENV !== 'production') {
   middlewares = [...middlewares, require('redux-logger')()];
 }
 
-const reducer = compose(
+const finalReducer = compose(
   mergePersistedState()
 )(rootReducer);
 
-const rejectKeys = [
-  'figlet.isFetching', 'figlet.didInvalidate',
-  'figlet.isFetchingCanvas', 'figlet.didInvalidateCanvas'
-];
 const storage = compose(
   debounce(1000),
   reject(rejectKeys)
@@ -32,5 +29,5 @@ const finalCreateStore = compose(
 )(createStore);
 
 export default function configureStore(initialState) {
-  return finalCreateStore(reducer, initialState);
+  return finalCreateStore(finalReducer, initialState);
 }

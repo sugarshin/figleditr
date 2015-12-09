@@ -19,24 +19,18 @@ import Figlet from '../components/Figlet';
 import DownloadButton from '../components/DownloadButton';
 import DeleteBackgroundImageButton from '../components/DeleteBackgroundImageButton';
 
-import * as actions from '../actions';
+import * as rootActions from '../actions';
 
 const mapStateToProps = state => ({ ...state });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(actions, dispatch)
+  actions: bindActionCreators(rootActions, dispatch)
 });
 
-// @connect(mapStateToProps, mapDispatchToProps)
 class App extends Component {
 
   render() {
-    /* its ok undefined propTypes Smart Component */
-    /* what should I do actions... */
-    /* eslint-disable react/prop-types, no-shadow */
     const { figlet, appearance, actions } = this.props;
-
-    /* eslint-enable react/prop-types, no-shadow */
 
     return (
       <div className="app">
@@ -145,5 +139,4 @@ class App extends Component {
 
 }
 
-// Decorators are not supported yet in 6.x pending proposal update
 export default connect(mapStateToProps, mapDispatchToProps)(App);

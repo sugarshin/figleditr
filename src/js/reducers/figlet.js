@@ -10,23 +10,22 @@ export default function figlet(state = initialState.figlet, action) {
       didInvalidate: false
     });
 
-  case types.RECEIVE_FIGLET:
-    {
-      const { source,
-              font,
-              dest,
-              horizontalLayout,
-              verticalLayout } = action.payload;
-      return Object.assign({}, state, {
-        isFetching: false,
-        didInvalidate: false,
-        source,
-        font,
-        dest,
-        horizontalLayout,
-        verticalLayout
-      });
-    }
+  case types.RECEIVE_FIGLET: {
+    const { source,
+            font,
+            dest,
+            horizontalLayout,
+            verticalLayout } = action.payload;
+    return Object.assign({}, state, {
+      isFetching: false,
+      didInvalidate: false,
+      source,
+      font,
+      dest,
+      horizontalLayout,
+      verticalLayout
+    });
+  }
 
   case types.INVALIDATE_FIGLET:
     return Object.assign({}, state, {
@@ -39,15 +38,14 @@ export default function figlet(state = initialState.figlet, action) {
       didInvalidateCanvas: false
     });
 
-  case types.RECEIVE_CANVAS:
-    {
-      const { downloadImageURL } = action;
-      return Object.assign({}, state, {
-        isFetchingCanvas: false,
-        didInvalidateCanvas: false,
-        downloadImageURL
-      });
-    }
+  case types.RECEIVE_CANVAS: {
+    const { downloadImageURL } = action;
+    return Object.assign({}, state, {
+      isFetchingCanvas: false,
+      didInvalidateCanvas: false,
+      downloadImageURL
+    });
+  }
 
   case types.INVALIDATE_CANVAS:
     return Object.assign({}, state, {

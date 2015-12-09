@@ -24,3 +24,8 @@ export default {
     isOpened: true
   }
 };
+
+export const rejectKeys = [
+  'figlet.isFetching', 'figlet.didInvalidate',
+  'figlet.isFetchingCanvas', 'figlet.didInvalidateCanvas'
+];
