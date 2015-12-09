@@ -56,7 +56,7 @@ module.exports.stylus = {
 };
 
 module.exports.minifyCss = {
-  src: `${DIR.DEST}/css/main.css`,
+  src: `${DIR.DEST}/css/index.css`,
   dest: `${DIR.DEST}/css`
 };
 
